@@ -261,7 +261,7 @@ conn = snowflake.connector.connect(
     role=os.getenv("SNOWFLAKE_ROLE")
 )
 ```
-Then create the directory where the data are going to be downloaded, download the three H&M tables from Kaggle and unzip them.
+Then create a directory for the data, download the three H&M tables from Kaggle and unzip them:
 
 ```python
 # Define paths and dataset information
@@ -284,7 +284,7 @@ for file_name in file_names:
 shutil.rmtree(zip_path)
 ```
 
-Finally, upload the tables in the hm_stage you previously created.
+Finally, upload the tables in the **hm_stage** you previously created:
 
 ```python
 # Upload the CSV files to Snowflake stage
@@ -308,3 +308,258 @@ for file_name in file_names:
 cursor.close()
 conn.close()
 ```
+
+## Upload Code to the Stage
+
+Once you have created the database, schema and stage you will now need to upload the necessary files to the stage that we can insert the data into Snowflake tables for further processing and create the notebooks for the use cases.
+
+For this you need to login into Snowsight, and, on the left, click on `Data > Databases`.
+After that, find the database that you have just created, and select the schema, stages and then the stage that you created. In our example you would be clicking on `TF_DB > TF_SCHEMA > Stages > TF_STAGE` as shown in the picture:
+
+Next you will need to add some files. For this you need to click on the `Files` button on the top right:
+
+In the following window you will need to upload the following files:
+
+* [`environment.yml`](for_stage/environment.yml)
+* [`hm_churn_prediction.ipynb`](for_stage/genai_kg_qa.ipynb)
+* [`hm_purchase_recommendations.ipynb`](for_stage/gnn-link-prediction.ipynb)
+* [`rai_gnns_experimental.zip`](for_stage/rai_gnns_experimental.zip)
+
+You can select them and drag and drop them on the window that opened. For your convenience all of these files are already located in the [for_stage/](/for_stage/) folder in the current repository.
+
+Once you dragged and dropped the files click on the `upload` button.
+
+Your stage will now look something like this:
+
+## Load the Data into Snowflake Tables
+
+Once you have all the files in the stage you can now go ahead and import the data into Snowflake tables.
+
+For this you need to run the following commands in a Snowflake SQL Worksheet. For your convenience, all of the code is located in [import_data.sql](setup/3_import_data.sql).
+
+```sql
+-- Script to load the H&M Personalized Fashion Recommendations dataset into Snowflake tables
+
+USE ROLE ACCOUNTADMIN;
+USE DATABASE HM_DB;
+USE SCHEMA HM_SCHEMA;
+USE WAREHOUSE HM_WH;
+
+-- Create a file format for CSV
+CREATE OR REPLACE FILE FORMAT my_csv_format
+    TYPE = 'CSV'
+    FIELD_DELIMITER = ','
+    SKIP_HEADER = 1
+    NULL_IF = ('NULL', 'null')
+    FIELD_OPTIONALLY_ENCLOSED_BY = '0x22'
+    EMPTY_FIELD_AS_NULL = TRUE;
+
+-- Create the customers table
+CREATE OR REPLACE TABLE CUSTOMERS (
+	"customer_id" VARCHAR,
+	"FN" FLOAT,
+	"Active" FLOAT,
+	"club_member_status" VARCHAR,
+	"fashion_news_frequency" VARCHAR,
+	"age" FLOAT,
+	"postal_code" VARCHAR
+);
+
+-- Copy data into the customers table
+COPY INTO CUSTOMERS
+FROM '@"HM_DB"."HM_SCHEMA"."HM_STAGE"/customers.csv'
+FILE_FORMAT = my_csv_format;
+
+-- Create the articles table
+CREATE OR REPLACE TABLE ARTICLES (
+    "article_id" VARCHAR,
+    "product_code" NUMBER(38,0),
+    "prod_name" VARCHAR,
+    "product_type_no" NUMBER(38,0),
+    "product_type_name" VARCHAR,
+    "product_group_name" VARCHAR,
+    "graphical_appearance_no" NUMBER(38,0),
+    "graphical_appearance_name" VARCHAR,
+    "colour_group_code" NUMBER(38,0),
+    "colour_group_name" VARCHAR,
+    "perceived_colour_value_id" NUMBER(38,0),
+    "perceived_colour_value_name" VARCHAR,
+    "perceived_colour_master_id" NUMBER(38,0),
+    "perceived_colour_master_name" VARCHAR,
+    "department_no" NUMBER(38,0),
+    "department_name" VARCHAR,
+    "index_code" VARCHAR,
+    "index_name" VARCHAR,
+    "index_group_no" NUMBER(38,0),
+    "index_group_name" VARCHAR,
+    "section_no" NUMBER(38,0),
+    "section_name" VARCHAR,
+    "garment_group_no" NUMBER(38,0),
+    "garment_group_name" VARCHAR,
+    "detail_desc" VARCHAR
+);
+
+-- Copy data into the articles table
+COPY INTO ARTICLES
+FROM '@"HM_DB"."HM_SCHEMA"."HM_STAGE"/articles.csv'
+FILE_FORMAT = my_csv_format;
+
+-- Create the transactions table
+CREATE OR REPLACE TABLE TRANSACTIONS (
+    "t_dat" VARCHAR,
+    "customer_id" VARCHAR,
+    "article_id" VARCHAR,
+    "price" FLOAT,
+    "sales_channel_id" NUMBER(38,0)
+);
+
+-- Copy data into the transactions table
+COPY INTO TRANSACTIONS
+FROM '@"HM_DB"."HM_SCHEMA"."HM_STAGE"/transactions_train.csv'
+FILE_FORMAT = my_csv_format;
+```
+
+## Create the Training Tables for the Churn and Purchase tasks
+
+Now that you have the three H&M tables imported in Snowflake, you can create the training tables for the task. For this you need to run the following commands in a Snowflake SQL Worksheet. For your convenience, all of the code is located in [create_tasks.sql](setup/4_create_tasks.sql).
+
+```sql
+-- Define database, schemas and tables
+SET db_name = 'hm_db';
+SET schema_name = 'hm_schema';
+SET schema_full_name = $db_name||'.'||$schema_name; -- fully-qualified
+SET schema_purchase_name = 'hm_purchase';
+SET schema_purchase_full_name = $db_name||'.'||$schema_purchase_name; -- fully-qualified
+SET schema_churn_name = 'hm_churn';
+SET schema_churn_full_name = $db_name||'.'||$schema_churn_name; -- fully-qualified
+
+SET customers_table_name = 'customers';
+SET customers_table_full_name = $schema_full_name||'.'||$customers_table_name;
+SET articles_table_name = 'articles';
+SET articles_table_full_name = $schema_full_name||'.'||$articles_table_name;
+SET transactions_table_name = 'transactions';
+SET transactions_table_full_name = $schema_full_name||'.'||$transactions_table_name;
+
+SET churn_train_table_name = $schema_churn_full_name||'.'||'train';
+SET churn_validation_table_name = $schema_churn_full_name||'.'||'validation';
+SET churn_test_table_name = $schema_churn_full_name||'.'||'test';
+
+SET purchase_train_table_name = $schema_purchase_full_name||'.'||'train';
+SET purchase_validation_table_name = $schema_purchase_full_name||'.'||'validation';
+SET purchase_test_table_name = $schema_purchase_full_name||'.'||'test';
+
+USE ROLE ACCOUNTADMIN;
+USE DATABASE IDENTIFIER($db_name);
+
+-- Create or replace the TRAIN table with the first 52 weeks
+CREATE OR REPLACE TABLE IDENTIFIER($churn_train_table_name) AS
+-- Generates 52 timestamps, each one week apart, starting from '2019-09-02'
+WITH timestamps AS (
+    SELECT DATEADD(WEEK, ROW_NUMBER() OVER (ORDER BY TRUE) - 1, '2019-09-02') AS timestamp
+    FROM TABLE(GENERATOR(ROWCOUNT => 52))
+)
+-- Check if a customer churned by checking
+-- if there were transactions made by that customer during the next week
+SELECT * FROM (
+SELECT
+    TO_VARCHAR(ts.timestamp, 'YYYY-MM-DD') AS "timestamp",
+    c."customer_id",
+    CAST(
+        NOT EXISTS (
+            SELECT 1
+            FROM IDENTIFIER($transactions_table_full_name) t
+            WHERE
+                t."customer_id" = c."customer_id"
+                AND CAST(t."t_dat" AS DATE) > ts.timestamp
+                AND CAST(t."t_dat" AS DATE) <= DATEADD(DAY, 7, ts.timestamp)
+        ) AS INTEGER
+    ) AS "churn"
+FROM
+    timestamps ts,
+    IDENTIFIER($customers_table_full_name) c
+-- Ensure that the customer was active before by checking if
+-- there were transactions made by that customer during the previous week
+WHERE
+    EXISTS (
+        SELECT 1
+        FROM IDENTIFIER($transactions_table_full_name) t
+        WHERE
+            t."customer_id" = c."customer_id"
+            AND CAST(t."t_dat" AS DATE) > DATEADD(DAY, -7, ts.timestamp)
+            AND CAST(t."t_dat" AS DATE) <= ts.timestamp
+    )
+) AS shuffled_table
+ORDER BY RANDOM();
+
+-- Create the VALIDATION table with the 53rd week
+CREATE OR REPLACE TABLE IDENTIFIER($churn_validation_table_name) AS
+WITH timestamps AS (
+    SELECT '2020-08-31' AS timestamp
+)
+SELECT * FROM (
+SELECT
+    ts.timestamp as "timestamp",
+    c."customer_id",
+    CAST(
+        NOT EXISTS (
+            SELECT 1
+            FROM IDENTIFIER($transactions_table_full_name) t
+            WHERE
+                t."customer_id" = c."customer_id"
+                AND CAST(t."t_dat" AS DATE) > ts.timestamp
+                AND CAST(t."t_dat" AS DATE) <= DATEADD(DAY, 7, ts.timestamp)
+        ) AS INTEGER
+    ) AS "churn"
+FROM
+    timestamps ts,
+    IDENTIFIER($customers_table_full_name) c
+WHERE
+    EXISTS (
+        SELECT 1
+        FROM IDENTIFIER($transactions_table_full_name) t
+        WHERE
+            t."customer_id" = c."customer_id"
+            AND CAST(t."t_dat" AS DATE) > DATEADD(DAY, -7, ts.timestamp)
+            AND CAST(t."t_dat" AS DATE) <= ts.timestamp
+    )
+) AS shuffled_table
+ORDER BY RANDOM();
+
+-- Create the TEST table with the 54th week
+CREATE OR REPLACE TABLE IDENTIFIER($churn_test_table_name) AS
+WITH timestamps AS (
+    SELECT '2020-09-07' AS timestamp
+)
+SELECT * FROM (
+SELECT
+    ts.timestamp as "timestamp",
+    c."customer_id",
+    CAST(
+        NOT EXISTS (
+            SELECT 1
+            FROM IDENTIFIER($transactions_table_full_name) t
+            WHERE
+                t."customer_id" = c."customer_id"
+                AND CAST(t."t_dat" AS DATE) > ts.timestamp
+                AND CAST(t."t_dat" AS DATE) <= DATEADD(DAY, 7, ts.timestamp)
+        ) AS INTEGER
+    ) AS "churn"
+FROM
+    timestamps ts,
+    IDENTIFIER($customers_table_full_name) c
+WHERE
+    EXISTS (
+        SELECT 1
+        FROM IDENTIFIER($transactions_table_full_name) t
+        WHERE
+            t."customer_id" = c."customer_id"
+            AND CAST(t."t_dat" AS DATE) > DATEADD(DAY, -7, ts.timestamp)
+            AND CAST(t."t_dat" AS DATE) <= ts.timestamp
+    )
+) AS shuffled_table
+ORDER BY RANDOM();
+```
+
+## Create Notebooks
+
+Next, you will create the notebooks based on the `.ipynb` sources that you uploaded on stage.
