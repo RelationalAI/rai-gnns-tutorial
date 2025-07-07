@@ -205,4 +205,38 @@ Depending on the role used for accessing the database, you may need to grant the
 GRANT CREATE NOTEBOOK ON SCHEMA identifier($schema_full_name) TO ROLE identifier($role_name);
 ```
 
+## Get data and upload to Snowflake stage
+
+The use cases of this tutorial are based on the [**H&M Personalized Fashion Recommendations**](https://www.kaggle.com/competitions/h-and-m-personalized-fashion-recommendations/data?select=customers.csv). You will need to download the data from Kaggle and then upload it to the Snowflake stage you previously created. For that you have to follow these steps:
+
+1. Go to the **Rules** page of the **H&M Personalized Fashion Recommendations** competition and accept the rules.
+2. Go to the **settings** of your Kaggle profile, find the **API** section and click on the **Create New Token** button. This is going to download a **kaggle.json** containing your username and a key.
+3. Download the [**get_data.py**](/HM/setup/2_get_data.py)
+4. On your local machine create a conda environment:
+
+```sh
+conda create --name snowflake_kaggle_connector python=3.10
+
+conda activate snowflake_kaggle_connector
+
+pip install snowflake-connector-python kaggle python-dotenv pandas
+```
+4. In the same directory you put the **get_data.py**, create a **.env** file defining the following variables. 
+
+```sh
+KAGGLE_USERNAME = <username from kaggle.json>
+KAGGLE_KEY = <key from kaggle.json>
+SNOWFLAKE_USER=<snowflake username>
+SNOWFLAKE_PASSWORD=<snowflake password>
+SNOWFLAKE_ACCOUNT=<name of snowflake account>
+SNOWFLAKE_WAREHOUSE=HM_WH
+SNOWFLAKE_DATABASE=HM_DB
+SNOWFLAKE_SCHEMA=HM_SCHEMA
+SNOWFLAKE_ROLE=ACCOUNTADMIN
+SNOWFLAKE_STAGE=HM_STAGE
+```
+5. Run the **get_data.py**
+```sh
+python 2_get_data.py
+```
 
