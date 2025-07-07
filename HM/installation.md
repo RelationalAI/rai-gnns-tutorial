@@ -1,7 +1,7 @@
 # Installation Instructions
 
 
-In the following you will find installation instructions for the code of the different HM use cases.
+In the following you will find installation instructions for the code of the different H&M use cases.
 
 ## tl;dr
 
