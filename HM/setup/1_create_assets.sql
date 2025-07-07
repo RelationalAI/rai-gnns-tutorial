@@ -12,8 +12,8 @@ USE ROLE ACCOUNTADMIN;
 -- no need to touch the rest of the code
 
 SET db_name = 'hm_db';
-SET schema_data_name = 'hm_data';
-SET schema_data_full_name = $db_name||'.'||$schema_data_name; -- fully-qualified
+SET schema_name = 'hm_schema';
+SET schema_full_name = $db_name||'.'||$schema_name; -- fully-qualified
 SET schema_purchase_name = 'hm_purchase';
 SET schema_purchase_full_name = $db_name||'.'||$schema_purchase_name; -- fully-qualified
 SET schema_churn_name = 'hm_churn';
@@ -43,10 +43,18 @@ USE DATABASE identifier($db_name);
 CREATE OR REPLACE WAREHOUSE identifier($wh_name) WITH WAREHOUSE_SIZE = $wh_size;
 GRANT USAGE ON WAREHOUSE identifier($wh_name) TO ROLE identifier($role_name);
 
--- create a schema
+-- create schemas
 CREATE SCHEMA IF NOT EXISTS identifier($schema_full_name);
 GRANT USAGE ON SCHEMA identifier($schema_full_name) TO ROLE identifier($role_name);
 USE SCHEMA identifier($schema_full_name);
+
+CREATE SCHEMA IF NOT EXISTS identifier($schema_churn_full_name);
+GRANT USAGE ON SCHEMA identifier($schema_churn_full_name) TO ROLE identifier($role_name);
+USE SCHEMA identifier($schema_churn_full_name);
+
+CREATE SCHEMA IF NOT EXISTS identifier($schema_purchase_full_name);
+GRANT USAGE ON SCHEMA identifier($schema_purchase_full_name) TO ROLE identifier($role_name);
+USE SCHEMA identifier($schema_purchase_full_name);
 
 -- create a stage
 CREATE STAGE IF NOT EXISTS identifier($stage_full_name) DIRECTORY = ( ENABLE = true );
