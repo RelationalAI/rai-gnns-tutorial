@@ -563,3 +563,85 @@ ORDER BY RANDOM();
 ## Create Notebooks
 
 Next, you will create the notebooks based on the `.ipynb` sources that you uploaded on stage.
+
+You can do this by running the following commands in a Snowflake Worksheet.
+For your convenience, the whole code is available in [create_notebooks.sql](setup/5_create_notebooks.sql).
+
+```sql
+--
+-- notebooks
+--
+USE ROLE ACCOUNTADMIN;
+USE DATABASE HM_DB;
+USE SCHEMA HM_SCHEMA;
+
+
+-- churn_prediction.ipynb
+CREATE OR REPLACE NOTEBOOK churn_prediction
+    FROM '@hm_db.hm_schema.hm_stage'
+    MAIN_FILE = 'churn_prediction.ipynb'
+    QUERY_WAREHOUSE = HM_WH
+    WAREHOUSE = HM_WH
+    ;
+
+-- purchase_recommendations.ipynb
+CREATE OR REPLACE NOTEBOOK purchase_recommendations
+    FROM '@hm_db.hm_schema.hm_stage'
+    MAIN_FILE = 'purchase_recommendations.ipynb'
+    QUERY_WAREHOUSE = HM_WH
+    WAREHOUSE = HM_WH
+    ;
+```
+
+### Setting up Packages and External Access for the Notebooks
+
+> [!NOTE]
+> You need to do the following for every notebook that you would like to use
+
+#### External Access
+
+Once you have created the notebooks, you need to set up external access for them.
+This is needed by the RelationalAI Native App in order to communicate with the RelationalAI backend.
+
+More specifically, you will need to enable the `S3_RAI_INTERNAL_BUCKET_EGRESS_INTEGRATION`.
+
+For this, you need to click on the `...` on the top right of the page when viewing a Notebook and then on `Notebook settings`:
+
+Next, you need to click on the  toggle-on the `External access` tab on top and toggle the `S3_RAI_INTERNAL_BUCKET_EGRESS_INTEGRATION` to on. Next click `Save`.
+
+#### Loading Python Packages
+
+The Notebooks containing the code for the various use cases use some Python packages.
+These packages need to be installed before the Notebook can run.
+
+To install such packages you should click on the top `Packages` and then type the name of each package in the`Anaconda Packages` search box and selecting the package. You should install the following packages:
+
+* `numpy`
+* `pandas`
+* `pydantic`
+* `pydot`
+* `python-dotenv`
+* `python-graphviz`
+* `sqlalchemy`
+* `tabulate`
+
+Next, click `Save` for the packages to be installed.
+
+> [!NOTE]
+> For your convenience, a file called `environment.yml` is included in the files that are meant to be uploaded to the stage. This file already specifies all the above packages and therefore the notebooks should already have the necessary packages installed. If one or more packages are not installed please follow the process above to manually install them.
+
+#### Loading the `rai_gnns_experimental.zip` Python Package
+
+Finally, you will need to install the `rai_gnns_experimental.zip` Python package that is needed to
+interface with the RelationalAI Native App. The process is somewhat similar with the regular Python packages that
+you just installed, except you will be clicking on the `Stage Packages` tab on top and specifying the path to the `rai_gnns_experimental.zip` package.
+
+The path needs to be fully qualified. For example `@HM_DB.HM_SCHEMA.HM_STAGE/rai_gnns_experimental.zip`:
+
+The system checks whether the path contains a valid Python package and, if yes, a green check box appears.
+Click `Import` to import the `rai_gnns_experimental.zip` package.
+
+
+## Completed
+
+You can now pick a Python Notebook from the Notebooks section on the left in Snowsight (i.e. the Snowflake UI) and run it!
