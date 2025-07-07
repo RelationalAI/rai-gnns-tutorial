@@ -9,7 +9,8 @@ The process below explains step by step how to create the necessary database, wa
 
 1. In a SQL Worksheet, run [create_assets.sql](/HM/setup/1_create_assets.sql)
 2. Locally on your computer, run the Python script [get_data.py](/HM/setup/2_get_data.py)
-3. Go to the stage created and upload all the files under [/for_stage](/for_stage/)
-4. In a SQL Worksheet, run [import_data.sql](/setup/3_import_data.sql)
-5. In a SQL Worksheet, run [create_notebooks.sql](/setup/4_create_notebooks.sql)
-6. Under Notebooks in the Snowflake UI you can view the Python notebooks created by this tutorial. Note that you will need to install some [Python](#loading-python-packages) and [RelationalAI](#loading-the-relationalaizip-and-rai_gnns_experimentalzip-python-packages) Python packages and also [provide access to S3](#external-access) for the notebooks to work.
+3. Go to the stage created and upload all the files under [/for_stage](/HM/for_stage/)
+4. In a SQL Worksheet, run [import_data.sql](/HM/setup/3_import_data.sql)
+5. In a SQL Worksheet, run [create_tasks.sql](/HM/setup/3_create_tasks.sql)
+6. In a SQL Worksheet, run [create_notebooks.sql](/HM/setup/4_create_notebooks.sql)
+7. Under Notebooks in the Snowflake UI you can view the Python notebooks created by this tutorial. Note that you will need to install some [Python](#loading-python-packages) and [RelationalAI](#loading-the-relationalaizip-and-rai_gnns_experimentalzip-python-packages) Python packages and also [provide access to S3](#external-access) for the notebooks to work.
