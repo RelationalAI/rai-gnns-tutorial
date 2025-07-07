@@ -89,3 +89,120 @@ Once the process completes (or you directly got the file from [/for_stage](/for_
 
 In the following steps you will be creating Snowflake Database Objects such as a warehouse, schema, stage, etc.
 
+### Specify Object Names
+
+You can decide on the names that you'd like to use and set them up in variables in the beginning, so that the rest of the code below can create the objects.
+
+> [!NOTE]
+> You will need to run the following in a Snowflake SQL worksheet. You can find all the code in one place in the [create_assets.sql](/HM/setup/1_create_assets.sql) file.
+
+Here is an example of the configuration of names for database, warehouse, stage, etc
+
+```sql
+USE ROLE ACCOUNTADMIN;
+
+-- set up of constants, change the names in this section of what assets you'd like to create,
+-- no need to touch the rest of the code
+
+SET db_name = 'hm_db';
+SET schema_name = 'hm_schema';
+SET schema_full_name = $db_name||'.'||$schema_name; -- fully-qualified
+SET schema_purchase_name = 'hm_purchase';
+SET schema_purchase_full_name = $db_name||'.'||$schema_purchase_name; -- fully-qualified
+SET schema_churn_name = 'hm_churn';
+SET schema_churn_full_name = $db_name||'.'||$schema_churn_name; -- fully-qualified
+SET stage_name = 'hm_stage'; -- fully-qualified
+SET stage_full_name = $schema_full_name||'.'||$stage_name;
+SET wh_name = 'hm_wh';
+SET wh_size = 'X-SMALL';
+SET role_name = 'SYSADMIN';   -- what role will have access to the db/warehouse/schema etc.
+```
+
+
+
+### Cleanup and Create Role
+The following cleans up by removing the database and warehouse for a fresh installation.
+
+```sql
+--
+-- NOTE: in the following everything is DROPPED and re-created
+--
+
+-- cleanup
+DROP DATABASE IF EXISTS identifier($db_name);
+DROP WAREHOUSE IF EXISTS identifier($wh_name);
+
+-- create role if needed
+CREATE ROLE IF NOT EXISTS identifier($role_name);
+```
+
+
+
+### Create a Database
+
+Next, you will create a database:
+
+```sql
+-- create a database
+CREATE DATABASE IF NOT EXISTS identifier($db_name);
+GRANT OWNERSHIP ON DATABASE identifier($db_name) TO ROLE identifier($role_name) COPY CURRENT GRANTS;
+USE DATABASE identifier($db_name);
+```
+
+
+
+### Create a Warehouse
+
+Next, you will create a warehouse:
+
+```sql
+-- create warehouse
+CREATE OR REPLACE WAREHOUSE identifier($wh_name) WITH WAREHOUSE_SIZE = $wh_size;
+GRANT USAGE ON WAREHOUSE identifier($wh_name) TO ROLE identifier($role_name);
+```
+
+
+
+### Create Schemas
+
+You will need three schemas, the hm schema with the H&M tables, the churn chema with the churn task tables and the purchase schema with the purchase task tables. You can create these schemas as follows:
+
+```sql
+-- create schemas
+CREATE SCHEMA IF NOT EXISTS identifier($schema_full_name);
+GRANT USAGE ON SCHEMA identifier($schema_full_name) TO ROLE identifier($role_name);
+USE SCHEMA identifier($schema_full_name);
+
+CREATE SCHEMA IF NOT EXISTS identifier($schema_churn_full_name);
+GRANT USAGE ON SCHEMA identifier($schema_churn_full_name) TO ROLE identifier($role_name);
+USE SCHEMA identifier($schema_churn_full_name);
+
+CREATE SCHEMA IF NOT EXISTS identifier($schema_purchase_full_name);
+GRANT USAGE ON SCHEMA identifier($schema_purchase_full_name) TO ROLE identifier($role_name);
+USE SCHEMA identifier($schema_purchase_full_name);
+```
+
+
+
+### Create a Stage
+
+You will need the stage to upload the Python Notebooks as well as the raw csv data that will then imported into Snowflake Tables. You can create a stage as follows:
+
+```sql
+-- create a stage
+CREATE STAGE IF NOT EXISTS identifier($stage_full_name) DIRECTORY = ( ENABLE = true );
+GRANT READ ON STAGE identifier($stage_full_name) TO ROLE identifier($role_name);
+```
+
+
+
+### Enable User to Create Notebooks
+
+Depending on the role used for accessing the database, you may need to grant the user certain privileges to allow creation of notebooks. You can grant the privilege as follows:
+
+```sql
+-- privilege for notebook
+GRANT CREATE NOTEBOOK ON SCHEMA identifier($schema_full_name) TO ROLE identifier($role_name);
+```
+
+
