@@ -59,12 +59,10 @@ GRANT ROLE ACCOUNTADMIN, SYSADMIN TO USER HM_ADMIN;
 ALTER USER HM_ADMIN SET DEFAULT_ROLE=SYSADMIN;
 ```
 
-## Getting Access to the Native Apps
+## Getting Access to the RelationalAI Native App
 
-For the use cases you will need to have access to two different RelationalAI Native Apps.
+For the use cases you will need to have access to the RelationalAI Native App.
 For both apps, you can contact Nikolaos Vasiloglou `nik.vasiloglou@relational.ai` and Pigi Kouki `pigi.kouki@relational.ai` if you need assistance.
-
-### RelationalAI Native App
 
 You will need your account to have the [RAI Native App for Snowflake](https://docs.relational.ai/manage/install) installed. The link provides detailed instructions on how to install the App. Note that you will need to be a user with either `ORGADMIN` or `ACCOUNTADMIN` privileges and it requires notification from Relational AI as to when your access is enabled for your account. Please ensure to specify that you need access to the experimental version of the RelationalAI Native App which has the `GNN` features available.
 
