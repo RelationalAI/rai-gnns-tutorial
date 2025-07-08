@@ -317,13 +317,13 @@ For this you need to login into Snowsight, and, on the left, click on `Data > Da
 After that, find the database that you have just created, and select the schema, stages and then the stage that you created. In our example you would be clicking on `HM_DB > HM_SCHEMA > Stages > HM_STAGE` as shown in the picture:
 
 <picture>
-  <img src="assets/0-stage.png" alt="stage" style="width:350px;">
+  <img src="assets/0-stage.png" alt="stage" style="width:250px;">
 </picture>
 
 Next you will need to add some files. For this you need to click on the `Files` button on the top right:
 
 <picture>
-  <img src="assets/1-add-files.png" alt="stage" style="width:550px;">
+  <img src="assets/1-add-files.png" alt="stage" style="width:650px;">
 </picture>
 
 In the following window you will need to upload the following files:
@@ -338,13 +338,13 @@ You can select them and drag and drop them on the window that opened. For your c
 Once you dragged and dropped the files click on the `upload` button.
 
 <picture>
-  <img src="assets/2-upload.jpg" alt="stage" style="width:350px;">
+  <img src="assets/2-upload.png" alt="stage" style="width:350px;">
 </picture>
 
 Your stage will now look something like this:
 
 <picture>
-  <img src="assets/3-stage-files.jpg" alt="stage" style="width:550px;">
+  <img src="assets/3-stage-files.png" alt="stage" style="width:550px;">
 </picture>
 
 ## Load the Data into Snowflake Tables
