@@ -66,7 +66,7 @@ For both apps, you can contact Nikolaos Vasiloglou `nik.vasiloglou@relational.ai
 
 You will need your account to have the [RAI Native App for Snowflake](https://docs.relational.ai/manage/install) installed. The link provides detailed instructions on how to install the App. Note that you will need to be a user with either `ORGADMIN` or `ACCOUNTADMIN` privileges and it requires notification from Relational AI as to when your access is enabled for your account. Please ensure to specify that you need access to the experimental version of the RelationalAI Native App which has the `GNN` features available.
 
-## Building the `rai_gnns_experimental.zip` package
+## Building the `rai_gnns_experimental.zip` Package
 
 For traininig models and making predictions you will be working through a Snowflake Notebook and you will need to access certain RelationalAI services through the GNN Python SDK. To this end, you will need the `rai_gnns_experimental.zip` file.
 
@@ -205,7 +205,7 @@ Depending on the role used for accessing the database, you may need to grant the
 GRANT CREATE NOTEBOOK ON SCHEMA identifier($schema_full_name) TO ROLE identifier($role_name);
 ```
 
-## Get data and upload to Snowflake stage
+## Get and Upload Data to the Stage
 
 The use cases of this tutorial are based on the [**H&M Personalized Fashion Recommendations**](https://www.kaggle.com/competitions/h-and-m-personalized-fashion-recommendations/data?select=customers.csv). You will need to download the data from Kaggle and then upload it to the Snowflake stage you previously created. For that you have to follow these steps:
 
@@ -314,9 +314,17 @@ conn.close()
 Once you have created the database, schema and stage you will now need to upload the necessary files to the stage that we can insert the data into Snowflake tables for further processing and create the notebooks for the use cases.
 
 For this you need to login into Snowsight, and, on the left, click on `Data > Databases`.
-After that, find the database that you have just created, and select the schema, stages and then the stage that you created. In our example you would be clicking on `TF_DB > TF_SCHEMA > Stages > TF_STAGE` as shown in the picture:
+After that, find the database that you have just created, and select the schema, stages and then the stage that you created. In our example you would be clicking on `HM_DB > HM_SCHEMA > Stages > HM_STAGE` as shown in the picture:
+
+<picture>
+  <img src="assets/0-stage.jpeg" alt="stage" style="width:350px;">
+</picture>
 
 Next you will need to add some files. For this you need to click on the `Files` button on the top right:
+
+<picture>
+  <img src="assets/1-add-files.jpeg" alt="stage" style="width:550px;">
+</picture>
 
 In the following window you will need to upload the following files:
 
@@ -329,7 +337,15 @@ You can select them and drag and drop them on the window that opened. For your c
 
 Once you dragged and dropped the files click on the `upload` button.
 
+<picture>
+  <img src="assets/2-upload.jpg" alt="stage" style="width:350px;">
+</picture>
+
 Your stage will now look something like this:
+
+<picture>
+  <img src="assets/3-stage-files.jpg" alt="stage" style="width:550px;">
+</picture>
 
 ## Load the Data into Snowflake Tables
 
@@ -419,7 +435,7 @@ FROM '@"HM_DB"."HM_SCHEMA"."HM_STAGE"/transactions_train.csv'
 FILE_FORMAT = my_csv_format;
 ```
 
-## Create the Training Tables for the Churn and Purchase tasks
+## Create the Training Tables for the Churn and Purchase Tasks
 
 Now that you have the three H&M tables imported in Snowflake, you can create the training tables for the task. For this you need to run the following commands in a Snowflake SQL Worksheet. For your convenience, all of the code is located in [create_tasks.sql](setup/4_create_tasks.sql).
 
@@ -616,7 +632,15 @@ More specifically, you will need to enable the `S3_RAI_INTERNAL_BUCKET_EGRESS_IN
 
 For this, you need to click on the `...` on the top right of the page when viewing a Notebook and then on `Notebook settings`:
 
+<picture>
+  <img src="assets/10-notebook-settings.jpg" alt="stage" style="width:350px;">
+</picture>
+
 Next, you need to click on the  toggle-on the `External access` tab on top and toggle the `S3_RAI_INTERNAL_BUCKET_EGRESS_INTEGRATION` to on. Next click `Save`.
+
+<picture>
+  <img src="assets/11-external-access.jpg" alt="stage" style="width:350px;">
+</picture>
 
 #### Loading Python Packages
 
