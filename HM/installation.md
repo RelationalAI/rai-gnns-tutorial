@@ -250,6 +250,12 @@ SNOWFLAKE_STAGE=HM_STAGE
 python 2_get_data.py
 ```
 
+After running the script your local directory should look like this:
+
+<picture>
+  <img src="assets/6-local-dir.png" alt="stage" style="width:350px;">
+</picture>
+
 In this file, you first load the required variables, authenticate to Kaggle and create a connector to your Snowflake account:
 
 ```python
