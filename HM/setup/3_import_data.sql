@@ -73,12 +73,12 @@ CREATE OR REPLACE TABLE TRANSACTIONS (
     "sales_channel_id" NUMBER(38,0)
 );
 
--- Clean up
-REMOVE '@"HM_DB"."HM_SCHEMA"."HM_STAGE"/customers.csv.gz'
-REMOVE '@"HM_DB"."HM_SCHEMA"."HM_STAGE"/articles.csv.gz'
-REMOVE '@"HM_DB"."HM_SCHEMA"."HM_STAGE"/transactions_train.csv.gz'
-
 -- Copy data into the transactions table
 COPY INTO TRANSACTIONS
 FROM '@"HM_DB"."HM_SCHEMA"."HM_STAGE"/transactions_train.csv'
 FILE_FORMAT = my_csv_format;
+
+-- Clean up
+REMOVE '@"HM_DB"."HM_SCHEMA"."HM_STAGE"/customers.csv.gz'
+REMOVE '@"HM_DB"."HM_SCHEMA"."HM_STAGE"/articles.csv.gz'
+REMOVE '@"HM_DB"."HM_SCHEMA"."HM_STAGE"/transactions_train.csv.gz'
