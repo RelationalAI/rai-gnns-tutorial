@@ -650,13 +650,7 @@ These packages need to be installed before the Notebook can run.
 To install such packages you should click on the top `Packages` and then type the name of each package in the`Anaconda Packages` search box and selecting the package. You should install the following packages:
 
 * `numpy`
-* `pandas`
-* `pydantic`
-* `pydot`
-* `python-dotenv`
 * `python-graphviz`
-* `sqlalchemy`
-* `tabulate`
 
 * <picture>
   <img src="assets/13-python-packages.png" alt="stage" style="width:300px;">
