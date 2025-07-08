@@ -212,13 +212,13 @@ The use cases of this tutorial are based on the [**H&M Personalized Fashion Reco
 1. Go to the **Rules** page of the [**H&M Personalized Fashion Recommendations**](https://www.kaggle.com/competitions/h-and-m-personalized-fashion-recommendations/rules) competition and accept the rules. You should then see a confirmation message like this:
 
 <picture>
-  <img src="assets/5-kaggle-rules.png" alt="stage" style="width:250px;">
+  <img src="assets/5-kaggle-rules.png" alt="stage" style="width:450px;">
 </picture>
 
 3. Go to the **settings** of your Kaggle profile, find the **API** section and click on the **Create New Token** button. This is going to download a **kaggle.json** file containing your username and a key.
 
 <picture>
-  <img src="assets/5-kaggle-token.png" alt="stage" style="width:250px;">
+  <img src="assets/4-kaggle-token.png" alt="stage" style="width:450px;">
 </picture>
 
 5. Download the [**get_data.py**](/HM/setup/2_get_data.py) script.
