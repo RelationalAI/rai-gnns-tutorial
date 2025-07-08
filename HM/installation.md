@@ -317,13 +317,13 @@ For this you need to login into Snowsight, and, on the left, click on `Data > Da
 After that, find the database that you have just created, and select the schema, stages and then the stage that you created. In our example you would be clicking on `HM_DB > HM_SCHEMA > Stages > HM_STAGE` as shown in the picture:
 
 <picture>
-  <img src="assets/0-stage.jpeg" alt="stage" style="width:350px;">
+  <img src="assets/0-stage.png" alt="stage" style="width:350px;">
 </picture>
 
 Next you will need to add some files. For this you need to click on the `Files` button on the top right:
 
 <picture>
-  <img src="assets/1-add-files.jpeg" alt="stage" style="width:550px;">
+  <img src="assets/1-add-files.png" alt="stage" style="width:550px;">
 </picture>
 
 In the following window you will need to upload the following files:
