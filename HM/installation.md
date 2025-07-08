@@ -659,7 +659,7 @@ To install such packages you should click on the top `Packages` and then type th
 * `tabulate`
 
 * <picture>
-  <img src="assets/13-python-packages.jpg" alt="stage" style="width:300px;">
+  <img src="assets/13-python-packages.png" alt="stage" style="width:300px;">
 </picture>
 
 Next, click `Save` for the packages to be installed.
@@ -676,7 +676,7 @@ you just installed, except you will be clicking on the `Stage Packages` tab on t
 The path needs to be fully qualified. For example `@HM_DB.HM_SCHEMA.HM_STAGE/rai_gnns_experimental.zip`:
 
 <picture>
-  <img src="assets/14-import-relationalaizip.jpg" alt="stage" style="width:300px;">
+  <img src="assets/14-import-rai-gnns-experimental-zip.png" alt="stage" style="width:300px;">
 </picture>
 
 The system checks whether the path contains a valid Python package and, if yes, a green check box appears.
