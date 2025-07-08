@@ -651,6 +651,13 @@ To install such packages you should click on the top `Packages` and then type th
 
 * `numpy`
 * `python-graphviz`
+* `tabulate`
+* `pydantic`
+* `sqlalchemy`
+* `python-graphviz`
+* `cryptography`
+* `pydot`
+* `certifi`
 
 * <picture>
   <img src="assets/13-python-packages.png" alt="stage" style="width:300px;">
