@@ -207,12 +207,22 @@ GRANT CREATE NOTEBOOK ON SCHEMA identifier($schema_full_name) TO ROLE identifier
 
 ## Get and Upload Data to the Stage
 
-The use cases of this tutorial are based on the [**H&M Personalized Fashion Recommendations**](https://www.kaggle.com/competitions/h-and-m-personalized-fashion-recommendations/data?select=customers.csv). You will need to download the data from Kaggle and then upload it to the Snowflake stage you previously created. For that you have to follow these steps:
+The use cases of this tutorial are based on the [**H&M Personalized Fashion Recommendations**](https://www.kaggle.com/competitions/h-and-m-personalized-fashion-recommendations/overview). You will need to download the data from Kaggle and then upload it to the Snowflake stage you previously created. For that you have to follow these steps:
 
-1. Go to the **Rules** page of the **H&M Personalized Fashion Recommendations** competition and accept the rules.
-2. Go to the **settings** of your Kaggle profile, find the **API** section and click on the **Create New Token** button. This is going to download a **kaggle.json** containing your username and a key.
-3. Download the [**get_data.py**](/HM/setup/2_get_data.py) script.
-4. On your local machine create a conda environment:
+1. Go to the **Rules** page of the [**H&M Personalized Fashion Recommendations**](https://www.kaggle.com/competitions/h-and-m-personalized-fashion-recommendations/rules) competition and accept the rules. You should then see a confirmation message like this:
+
+<picture>
+  <img src="assets/5-kaggle-rules.png" alt="stage" style="width:250px;">
+</picture>
+
+3. Go to the **settings** of your Kaggle profile, find the **API** section and click on the **Create New Token** button. This is going to download a **kaggle.json** file containing your username and a key.
+
+<picture>
+  <img src="assets/5-kaggle-token.png" alt="stage" style="width:250px;">
+</picture>
+
+5. Download the [**get_data.py**](/HM/setup/2_get_data.py) script.
+6. On your local machine create a conda environment:
 
 ```sh
 conda create --name snowflake_kaggle_connector python=3.10
@@ -221,7 +231,7 @@ conda activate snowflake_kaggle_connector
 
 pip install snowflake-connector-python kaggle python-dotenv pandas
 ```
-4. In the same directory you put the **get_data.py**, create a **.env** file defining the following variables. 
+4. In the same directory you put the **get_data.py**, create a **.env** file defining the following variables:
 
 ```sh
 KAGGLE_USERNAME = <username from kaggle.json>
@@ -235,7 +245,7 @@ SNOWFLAKE_SCHEMA=HM_SCHEMA
 SNOWFLAKE_ROLE=ACCOUNTADMIN
 SNOWFLAKE_STAGE=HM_STAGE
 ```
-5. Run the **get_data.py**
+5. Run the **get_data.py** script.
 ```sh
 python 2_get_data.py
 ```
