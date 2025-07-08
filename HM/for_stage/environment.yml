@@ -2,5 +2,11 @@ name: app_environment
 channels:
   - snowflake
 dependencies:
-  - numpy=*
-  - python-graphviz
+  - tabulate=*
+  - pydantic=*
+  - pydantic-core
+  - sqlalchemy=*
+  - python-graphviz=*
+  - cryptography=*
+  - pydot=*
+  - certifi=*
