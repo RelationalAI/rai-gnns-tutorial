@@ -659,7 +659,7 @@ To install such packages you should click on the top `Packages` and then type th
 * `pydot`
 * `certifi`
 
-* <picture>
+<picture>
   <img src="assets/13-python-packages.png" alt="stage" style="width:300px;">
 </picture>
 
