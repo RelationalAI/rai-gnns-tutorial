@@ -211,7 +211,7 @@ The use cases of this tutorial are based on the [**H&M Personalized Fashion Reco
 
 1. Go to the **Rules** page of the **H&M Personalized Fashion Recommendations** competition and accept the rules.
 2. Go to the **settings** of your Kaggle profile, find the **API** section and click on the **Create New Token** button. This is going to download a **kaggle.json** containing your username and a key.
-3. Download the [**get_data.py**](/HM/setup/2_get_data.py)
+3. Download the [**get_data.py**](/HM/setup/2_get_data.py) script.
 4. On your local machine create a conda environment:
 
 ```sh
