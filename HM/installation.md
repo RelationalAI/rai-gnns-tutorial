@@ -658,6 +658,10 @@ To install such packages you should click on the top `Packages` and then type th
 * `sqlalchemy`
 * `tabulate`
 
+* <picture>
+  <img src="assets/13-python-packages.jpg" alt="stage" style="width:300px;">
+</picture>
+
 Next, click `Save` for the packages to be installed.
 
 > [!NOTE]
@@ -671,6 +675,10 @@ you just installed, except you will be clicking on the `Stage Packages` tab on t
 
 The path needs to be fully qualified. For example `@HM_DB.HM_SCHEMA.HM_STAGE/rai_gnns_experimental.zip`:
 
+<picture>
+  <img src="assets/14-import-relationalaizip.jpg" alt="stage" style="width:300px;">
+</picture>
+
 The system checks whether the path contains a valid Python package and, if yes, a green check box appears.
 Click `Import` to import the `rai_gnns_experimental.zip` package.
 
@@ -678,3 +686,7 @@ Click `Import` to import the `rai_gnns_experimental.zip` package.
 ## Completed
 
 You can now pick a Python Notebook from the Notebooks section on the left in Snowsight (i.e. the Snowflake UI) and run it!
+
+<picture>
+  <img src="assets/notebooks.png" alt="stage" style="width:600px;">
+</picture>
