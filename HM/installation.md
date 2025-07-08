@@ -215,14 +215,14 @@ The use cases of this tutorial are based on the [**H&M Personalized Fashion Reco
   <img src="assets/5-kaggle-rules.png" alt="stage" style="width:550px;">
 </picture>
 
-3. Go to the **settings** of your Kaggle profile, find the **API** section and click on the **Create New Token** button. This is going to download a **kaggle.json** file containing your username and a key.
+2. Go to the **settings** of your Kaggle profile, find the **API** section and click on the **Create New Token** button. This is going to download a **kaggle.json** file containing your username and a key.
 
 <picture>
   <img src="assets/4-kaggle-token.png" alt="stage" style="width:550px;">
 </picture>
 
-5. Download the [**get_data.py**](/HM/setup/2_get_data.py) script.
-6. On your local machine create a conda environment:
+3. Download the [**get_data.py**](/HM/setup/2_get_data.py) script.
+4. On your local machine create a conda environment:
 
 ```sh
 conda create --name snowflake_kaggle_connector python=3.10
@@ -231,7 +231,7 @@ conda activate snowflake_kaggle_connector
 
 pip install snowflake-connector-python kaggle python-dotenv pandas
 ```
-4. In the same directory you put the **get_data.py**, create a **.env** file defining the following variables:
+5. In the same directory you put the **get_data.py**, create a **.env** file defining the following variables:
 
 ```sh
 KAGGLE_USERNAME = <username from kaggle.json>
@@ -245,7 +245,7 @@ SNOWFLAKE_SCHEMA=HM_SCHEMA
 SNOWFLAKE_ROLE=ACCOUNTADMIN
 SNOWFLAKE_STAGE=HM_STAGE
 ```
-5. Run the **get_data.py** script.
+6. Run the **get_data.py** script.
 ```sh
 python 2_get_data.py
 ```
