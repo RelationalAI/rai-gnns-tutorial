@@ -256,7 +256,7 @@ After running the script your local directory should look like this:
   <img src="assets/6-local-dir.png" alt="stage" style="width:250px;">
 </picture>
 
-In this file, you first load the required variables, authenticate to Kaggle and create a connector to your Snowflake account:
+In this script, we first load the required variables, authenticate to Kaggle and create a connector to our Snowflake account:
 
 ```python
 # Load environment variables from .env file
@@ -277,7 +277,7 @@ conn = snowflake.connector.connect(
     role=os.getenv("SNOWFLAKE_ROLE")
 )
 ```
-Then create a directory for the data, download the three H&M tables from Kaggle and unzip them:
+Then we create a directory for the data, download the three H&M tables from Kaggle and unzip them:
 
 ```python
 # Define paths and dataset information
@@ -300,7 +300,7 @@ for file_name in file_names:
 shutil.rmtree(zip_path)
 ```
 
-Finally, upload the tables in the **hm_stage** you previously created:
+Finally, we upload the tables in the **hm_stage** we previously created:
 
 ```python
 # Upload the CSV files to Snowflake stage
