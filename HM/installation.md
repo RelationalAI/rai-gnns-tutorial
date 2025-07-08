@@ -666,7 +666,6 @@ These packages need to be installed before the Notebook can run.
 To install such packages you should click on the top `Packages` and then type the name of each package in the`Anaconda Packages` search box and selecting the package. You should install the following packages:
 
 * `numpy`
-* `python-graphviz`
 * `tabulate`
 * `pydantic`
 * `sqlalchemy`
