@@ -320,10 +320,10 @@ Next you will need to add some files. For this you need to click on the `Files` 
 
 In the following window you will need to upload the following files:
 
-* [`environment.yml`](for_stage/environment.yml)
-* [`hm_churn_prediction.ipynb`](for_stage/genai_kg_qa.ipynb)
-* [`hm_purchase_recommendations.ipynb`](for_stage/gnn-link-prediction.ipynb)
-* [`rai_gnns_experimental.zip`](for_stage/rai_gnns_experimental.zip)
+* [`environment.yml`](/HM/for_stage/environment.yml)
+* [`hm_churn_prediction.ipynb`](/HM/for_stage/hm_churn_prediction.ipynb)
+* [`hm_purchase_recommendations.ipynb`](/HM/for_stage/hm_purchase_recommendations.ipynb)
+* [`rai_gnns_experimental.zip`](/HM/for_stage/rai_gnns_experimental.zip)
 
 You can select them and drag and drop them on the window that opened. For your convenience all of these files are already located in the [for_stage/](/for_stage/) folder in the current repository.
 
