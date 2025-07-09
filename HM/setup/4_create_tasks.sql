@@ -25,6 +25,7 @@ SET purchase_test_table_name = $schema_purchase_full_name||'.'||'test';
 USE ROLE ACCOUNTADMIN;
 USE DATABASE IDENTIFIER($db_name);
 
+-- CHURN TASK
 -- Create or replace the TRAIN table with the first 52 weeks
 CREATE OR REPLACE TABLE IDENTIFIER($churn_train_table_name) AS
 -- Generates 52 timestamps, each one week apart, starting from '2019-09-02'
@@ -131,6 +132,84 @@ WHERE
             AND CAST(t."t_dat" AS DATE) <= ts.timestamp
     )
 ) AS shuffled_table
+ORDER BY RANDOM();
+
+-- PURCHASE TASK
+-- Create or replace the TRAIN task table for training
+CREATE OR REPLACE TABLE IDENTIFIER($purchase_train_table_name) AS
+-- Generate 52 weekly timestamps starting from 2019-09-02
+WITH timestamps AS (
+    SELECT DATEADD(WEEK, ROW_NUMBER() OVER (ORDER BY TRUE) - 1, '2019-09-02') AS timestamp
+    FROM TABLE(GENERATOR(ROWCOUNT => 52))
+),
+-- Join transactions that happen within [timestamp, timestamp + 7 days]
+joined AS (
+    SELECT
+        ts.timestamp,
+        t."customer_id",
+        t."article_id"
+    FROM timestamps ts
+    JOIN IDENTIFIER($transactions_table_full_name) t
+        ON CAST(t."t_dat" AS DATE) > ts.timestamp
+        AND CAST(t."t_dat" AS DATE) <= DATEADD(DAY, 7, ts.timestamp)
+)
+-- Aggregate article_ids as array per customer per timestamp
+SELECT
+    TO_VARCHAR(timestamp, 'YYYY-MM-DD') AS "timestamp",
+    "customer_id",
+    ARRAY_AGG(DISTINCT "article_id") AS "article_id"
+FROM joined
+GROUP BY timestamp, "customer_id"
+ORDER BY RANDOM();
+
+-- Create the VALIDATION table with the 53rd week
+CREATE OR REPLACE TABLE IDENTIFIER($purchase_validation_table_name) AS
+WITH timestamps AS (
+    SELECT '2020-08-31' AS timestamp
+),
+-- Join transactions that happen within [timestamp, timestamp + 7 days]
+joined AS (
+    SELECT
+        ts.timestamp,
+        t."customer_id",
+        t."article_id"
+    FROM timestamps ts
+    JOIN IDENTIFIER($transactions_table_full_name) t
+        ON CAST(t."t_dat" AS DATE) > ts.timestamp
+        AND CAST(t."t_dat" AS DATE) <= DATEADD(DAY, 7, ts.timestamp)
+)
+-- Aggregate article_ids as array per customer per timestamp
+SELECT
+    timestamp as "timestamp",
+    "customer_id",
+    ARRAY_AGG(DISTINCT "article_id") AS "article_id"
+FROM joined
+GROUP BY timestamp, "customer_id"
+ORDER BY RANDOM();
+
+-- Create the TEST table with the 54th week
+CREATE OR REPLACE TABLE IDENTIFIER($purchase_test_table_name) AS
+WITH timestamps AS (
+    SELECT '2020-09-07' AS timestamp
+),
+-- Join transactions that happen within [timestamp, timestamp + 7 days]
+joined AS (
+    SELECT
+        ts.timestamp,
+        t."customer_id",
+        t."article_id"
+    FROM timestamps ts
+    JOIN IDENTIFIER($transactions_table_full_name) t
+        ON CAST(t."t_dat" AS DATE) > ts.timestamp
+        AND CAST(t."t_dat" AS DATE) <= DATEADD(DAY, 7, ts.timestamp)
+)
+-- Aggregate article_ids as array per customer per timestamp
+SELECT
+    timestamp as "timestamp",
+    "customer_id",
+    ARRAY_AGG(DISTINCT "article_id") AS "article_id"
+FROM joined
+GROUP BY timestamp, "customer_id"
 ORDER BY RANDOM();
 
 -- here we grant access to all schemas and tables, you might want to
