@@ -2,6 +2,7 @@ name: app_environment
 channels:
   - snowflake
 dependencies:
+  - numpy=*
   - tabulate=*
   - pydantic=*
   - pydantic-core
