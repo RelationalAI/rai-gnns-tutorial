@@ -13,7 +13,7 @@ The process below explains step by step how to create the necessary database, wa
 4. In a SQL Worksheet, run [import_data.sql](/HM/setup/3_import_data.sql)
 5. In a SQL Worksheet, run [create_tasks.sql](/HM/setup/4_create_tasks.sql)
 6. In a SQL Worksheet, run [create_notebooks.sql](/HM/setup/5_create_notebooks.sql)
-7. Under Notebooks in the Snowflake UI you can view the Python notebooks created by this tutorial. Note that you will need to install some [Python](#loading-python-packages) packages and the [RelationalAI GNN](#loading-the-rai_gnns_experimental.zip-python-package) Python package and also [provide access to S3](#external-access) for the notebooks to work.
+7. Under Notebooks in the Snowflake UI you can view the Python notebooks created by this tutorial. Note that you will need to install some [Python](#loading-python-packages) packages, the [RelationalAI GNN](#loading-the-rai_gnns_experimentalzip-python-package) Python package and also [provide access to S3](#external-access) for the notebooks to work.
 
 ## Account & User (optional)
 
