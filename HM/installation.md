@@ -349,7 +349,7 @@ In the following window you will need to upload the following files:
 * [`hm_purchase_recommendations.ipynb`](/HM/for_stage/hm_purchase_recommendations.ipynb)
 * [`rai_gnns_experimental.zip`](/HM/for_stage/rai_gnns_experimental.zip)
 
-You can select them and drag and drop them on the window that opened. For your convenience all of these files are already located in the [for_stage/](/for_stage/) folder in the current repository.
+You can select them and drag and drop them on the window that opened. For your convenience all of these files are already located in the [for_stage/](/HM/for_stage/) folder in the current repository.
 
 Once you dragged and dropped the files click on the `upload` button.
 
