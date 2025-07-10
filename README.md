@@ -1,1 +1,1 @@
-# Running GNN tutorials
+# GNN tutorials
