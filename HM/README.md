@@ -23,7 +23,7 @@ In the HM directory we include two examples of using the RelationalAI GNN app to
 
 ## 🛠️ Installation
 
-To set up all the necessary data, tables, schemas, etc. for the two H&M examples you will need to go through the installation guide. Once this is completed you are able to run the Python Notebooks that were installed as part of the process.
+To set up all the necessary data, tables, schemas, etc. for the two H&M examples you will need to go through the [installation](/HM/installation.md) guide. Once this is completed you are able to run the Python Notebooks that were installed as part of the process.
 
 ---
 <a name="-dataset-schema"></a>
