@@ -57,6 +57,9 @@ In our use case, the task table consists of three columns:
 * Since we are predicting customer churn, the task table includes  `customer IDs`, representing the customer nodes for which predictions will be made. These values must match the primary key values in the `CUSTOMERS` table of the database.
 * Α `timestamp` column is also required, as a customer may be active one week but churn the next. 
 * The task table contains  the ground truth label, which the GNN will learn to predict. The label is `0` (no churn) if the customer made a purchase in the week following the timestamp and `1` (churn) otherwise. We are going to store the labels in the `churn` column. We are showing how to create the task table in the [installation.md](/HM/installation.md).
+
+To run this example you can use the [hm_churn_prediction.ipynb](/HM/sor_stage/hm_churn_prediction.ipynb).
+
 ---
 <a name="--purchase-recommendation"></a>
 
@@ -73,5 +76,7 @@ In our use case, the task table consists of three columns:
 * The timestamp column specifies the reference date. The model is expected to predict the articles that the customer will purchase in the seven days following this timestamp.
 
 This task formulation enables the model to learn personalized product recommendations that are both customer-specific and time-aware. We provide instructions for generating this task table in the [installation.md](/HM/installation.md).
+
+To run this example you can use the [hm_purchase_recommendations.ipynb](/HM/sor_stage/hm_purchase_recommendations.ipynb).
 
 ---
