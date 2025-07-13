@@ -7,6 +7,7 @@
 - [Dataset Schema](#-dataset-schema)
 - [Churn Prediction](#-churn-prediction)
 - [Purchase Recommendation](#-purchase-recommendation)
+- [MLflow](#-MLflow)
 
 <a name="-overview"></a>
 
@@ -80,3 +81,7 @@ This task formulation enables the model to learn personalized product recommenda
 To run this example you can use the [hm_purchase_recommendations.ipynb](/HM/for_stage/hm_purchase_recommendations.ipynb).
 
 ---
+
+<a name="-Mlflow"></a>
+
+## 📘 MLflow
