@@ -8,7 +8,7 @@ Upon opening MLflow, you will see two main tabs: the **Experiments** tab and the
 
 
 <p align="center">
-  <img src="/HM/assets/mlflow_1.png" alt="Image" />
+  <img src="assets/mlflow_1.png" alt="Image" />
 </p>
 <p align="center"><em>Figure 1: Example of an MLFLow experiments tracking section.</em></p>
 
@@ -17,7 +17,7 @@ If the model is still training, the `Overview` tab will indicate that its Status
 
 
 <p align="center">
-  <img src="/HM/assets/mlflow_2.png" alt="Image" />
+  <img src="assets/mlflow_2.png" alt="Image" />
 </p>
 <p align="center"><em>Figure 2: Example of an MLFLow experiments overview.</em></p>
 
@@ -26,7 +26,7 @@ To analyze a model's  performance metrics in real time, navigate to the **Model 
 
 
 <p align="center">
-  <img src="/HM/assets/mlflow_3.png" alt="Image" />
+  <img src="assets/mlflow_3.png" alt="Image" />
 </p>
 <p align="center"><em>Figure 3: Example of an MLFLow experiment metric tracking.</em></p>
 
