@@ -84,4 +84,6 @@ To run this example you can use the [hm_purchase_recommendations.ipynb](/HM/for_
 
 <a name="-Mlflow"></a>
 
-## 📘 MLflow
+## 🧠 MLflow
+
+In parallel with running the notebooks, you can use MLflow to monitor the training process—see an example [MLflow.md](/HM/MLflow.md).
