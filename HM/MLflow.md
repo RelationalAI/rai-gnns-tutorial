@@ -10,7 +10,7 @@ Upon opening MLflow, you will see two main tabs: the **Experiments** tab and the
 <p align="center">
   <img src="https://drive.google.com/uc?export=view&id=1vUFfr4bODHSFCyiyeVXKCyzjwShFkgCl" alt="Image" />
 </p>
-<p align="center"><em>Figure 12: Example of an MLFLow experiments tracking section.</em></p>
+<p align="center"><em>Figure 1: Example of an MLFLow experiments tracking section.</em></p>
 
 
 If the model is still training, the `Overview` tab will indicate that its Status is `Running`. 
@@ -19,7 +19,7 @@ If the model is still training, the `Overview` tab will indicate that its Status
 <p align="center">
   <img src="https://drive.google.com/uc?export=view&id=1Rjb6Q1GCnpozhkhbW0U4SCAVWtJ6gBrV" alt="Image" />
 </p>
-<p align="center"><em>Figure 13: Example of an MLFLow experiments overview.</em></p>
+<p align="center"><em>Figure 2: Example of an MLFLow experiments overview.</em></p>
 
 
 To analyze a model's  performance metrics in real time, navigate to the **Model Metrics** tab, where you can see key training statistics such as **training loss**, **validation loss**, **evaluation metrics**, and **learning rate** updates. These metrics are continuously updated as training progresses, allowing you to track improvements and detect any potential issues.
@@ -28,7 +28,7 @@ To analyze a model's  performance metrics in real time, navigate to the **Model 
 <p align="center">
   <img src="https://drive.google.com/uc?export=view&id=1y8oYXRzbXCJwWlbZdQKnG5hpW5RYCXgM" alt="Image" />
 </p>
-<p align="center"><em>Figure 14: Example of an MLFLow experiment metric tracking.</em></p>
+<p align="center"><em>Figure 3: Example of an MLFLow experiment metric tracking.</em></p>
 
 As shown in the image, there are several key metrics displayed during the model training process that can help you evaluate the model's performance:
 * `train_loss`: This plot shows how the model's error decreases over time on the training data, indicating its progress in learning. A decreasing train loss signifies that the model is improving its ability to predict the training data.
