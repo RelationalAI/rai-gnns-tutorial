@@ -8,7 +8,7 @@ Upon opening MLflow, you will see two main tabs: the **Experiments** tab and the
 
 
 <p align="center">
-  <img src="assets/mlflow_1.png" alt="Image" />
+  <img src="assets/mlfow_1.png" alt="Image" />
 </p>
 <p align="center"><em>Figure 1: Example of an MLFLow experiments tracking section.</em></p>
 
