@@ -50,7 +50,9 @@ This schema consists of three tables:
 
 ## 📉 Churn Prediction
 
-Using this dataset we can train a model to predict whether a customer will churn in the following week. This is a **node prediction task**, as we aim to make predictions for nodes of type `CUSTOMERS`. Since the prediction is a binary label (`1` = churn, `0` = no churn) the node prediction task is in more detail a **binary classification task**. 
+The first use case focuses on training a model that is able to predict whether a customer is likely to churn in the upcoming week.
+
+This is a **node prediction task**, as we aim to make predictions for nodes of type `CUSTOMERS`. Since the prediction is a binary label (`1` = churn, `0` = no churn) the node prediction task is in more detail a **binary classification task**. 
 
 To proceed, we must first create a **task table** that defines the prediction task. This table will contain training and validation examples for the model. It serves as a structured representation of the problem by specifying key entities from the database that are relevant to churn prediction. Additionally, it includes corresponding labels for each entity, providing the necessary supervision for the model to learn effectively. Optionally, this table also includes a time column that is crucial for some tasks as the one at hand. 
 
@@ -66,7 +68,9 @@ To run this example you can use the [hm_churn_prediction.ipynb](/HM/for_stage/hm
 
 ## 🛒 Purchase Recommendation
 
-Using the H&M dataset, we can also train a model to recommend suitable articles to customers. In order to do that we are training a model to predict which articles a customer will purchase in the following week. This is a **link prediction task**, as we aim to predict edges between nodes of type `CUSTOMER` and `ARTICLE`. Specifically, this is a temporal link prediction task, where predictions depend on when the interaction occurs.
+The second use case focuses on training a model that is able to generate personalized article recommendations for each customer. 
+
+In order to do that we are training a model to predict which articles a customer will purchase in the following week. This is a **link prediction task**, as we aim to predict edges between nodes of type `CUSTOMER` and `ARTICLE`. Specifically, this is a temporal link prediction task, where predictions depend on when the interaction occurs.
 
 To proceed, we must first create a **task table** that defines the recommendation task. This table contains training and validation examples that the model will learn from. It serves as a structured representation of the problem by specifying the key entities and their interactions within a time window. Additionally, it includes a timestamp column to indicate when the prediction is being made, which is essential for temporal modeling.
 
