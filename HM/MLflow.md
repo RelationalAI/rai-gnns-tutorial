@@ -49,7 +49,7 @@ To analyze a model's  performance metrics in real time, navigate to the **Model 
 </p>
 <p align="center"><em>Figure 3: Example of an MLFLow experiment metric tracking.</em></p>
 
-As shown in the image, there are several key metrics displayed during the model training process that can help you evaluate the model's performance:
+As shown in the figure, there are several key metrics displayed during the model training process that can help you evaluate the model's performance:
 * `train_loss`: This plot shows how the model's error decreases over time on the training data, indicating its progress in learning. A decreasing train loss signifies that the model is improving its ability to predict the training data.
 * `val_loss`: Tracks the model's error on unseen validation data. This helps in detecting overfitting—if the validation loss starts to increase while the train loss continues to decrease, it may indicate the model is memorizing the training data rather than generalizing well.
 * `train_metric_average_precision`: This measures how well the model correctly classifies the training data, reflecting its learning efficiency.
