@@ -69,9 +69,10 @@ You will then be presented with two options. The first option allows you to crea
 </p>
 <p align="center"><em>Figure 5: Click on Create New Model.</em></p>
 
-The second option lets you register the model **as a new version of an existing registered model**, in which case the newly trained model will be added as a version update to the selected model. After selecting the appropriate option, click **"Register"** to finalize the process.
 
 <p align="center">
   <img src="assets/mlflow_8.png" alt="Image" width="50%"/>
 </p>
 <p align="center"><em>Figure 6: Enter a custom name to specify your model.</em></p>
+
+The second option lets you register the model **as a new version of an existing registered model**, in which case the newly trained model will be added as a version update to the selected model. After selecting the appropriate option, click **"Register"** to finalize the process.
