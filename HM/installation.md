@@ -458,12 +458,15 @@ REMOVE '@"HM_DB"."HM_SCHEMA"."HM_STAGE"/customers.csv.gz'
 REMOVE '@"HM_DB"."HM_SCHEMA"."HM_STAGE"/articles.csv.gz'
 REMOVE '@"HM_DB"."HM_SCHEMA"."HM_STAGE"/transactions_train.csv.gz'
 ```
-<details>
+</details>
 
 
 ## Create the Training Tables for the Churn and Purchase Tasks
 
 Now that you have the three H&M tables imported in Snowflake, you can create the training tables for the task. For this you need to run the following commands in a Snowflake SQL Worksheet. For your convenience, all of the code is located in [create_tasks.sql](setup/4_create_tasks.sql).
+
+<details>
+  <summary>create_tasks.sql</summary>
 
 ```sql
 -- Define database, schemas and tables
@@ -689,6 +692,8 @@ GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN DATABASE HM_DB TO APPLICAT
 -- to give write access to
 GRANT CREATE TABLE ON ALL SCHEMAS IN DATABASE HM_DB TO APPLICATION RAI_EXPT_APP;
 ```
+
+<\details>
 
 ## Create Notebooks
 
