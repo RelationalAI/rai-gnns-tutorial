@@ -31,7 +31,7 @@ Upon opening MLflow, you will see two main tabs: the **Experiments** tab and the
 <p align="center"><em>Figure 1: Example of an MLFLow experiments tracking section.</em></p>
 
 Clicking on a specific model (here `crawling-mole-592`) will direct you to its detailed page, where you can track its progress.
-If the model is still training, the `Overview` tab will indicate that its Status is `Running`, like shown in the figure below. 
+If the model is still training, the `Overview` tab will indicate that its Status is `Running`, like shown in the Figure 2 below. 
 
 
 <p align="center">
