@@ -14,7 +14,23 @@ Below, we provide an overview of these three key areas. For a comprehensive guid
 #### 🎯 Track real-time training metrics
 During training, you can monitor the training process in real time via the **MLflow** page.
 
-To access the MLflow page 
+To access the MLflow page you can run:
+
+```python
+connector._get_gnn_engine_details(engine_name)
+```
+
+This will return a table with the engine details:
+
+<picture>
+  <img src="assets/mlflow_4.png" alt="stage" style="width:550px;">
+</picture>
+
+Scroll to the right and locate the **ingress URL** for the **mlflowendpoint** in the **Settings** cell. Use the URL to navigate to the page, then log in using your Snowflake credentials.
+
+<picture>
+  <img src="assets/mlflow_5.png" alt="stage" style="width:550px;">
+</picture>
 
 Upon opening MLflow, you will see two main tabs: the **Experiments** tab and the **Models** tab. The **Experiments** tab displays a list of all your experiments on the left side. By selecting your current experiment, identified by its `DatasetName/TaskType/TaskName`, you will see all models trained under that experiment listed on the main page. Clicking on a specific model will direct you to its detailed page, where you can track its progress. 
 
