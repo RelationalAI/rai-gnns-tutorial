@@ -22,22 +22,22 @@ Scroll to the right and locate the **ingress URL** for the **mlflowendpoint** in
   <img src="/HM/assets/mlflow_5.png" alt="stage" style="width:950px;">
 </picture>
 
-Upon opening MLflow, you will see two main tabs: the **Experiments** tab and the **Models** tab. The **Experiments** tab displays a list of all your experiments on the left side. By selecting your current experiment `HM_Dataset/binary_classification/Churn`, you will see all models trained under that experiment listed on the main page, as shown in Figure 1 below. 
+Upon opening MLflow, you will see two main tabs: the **Experiments** tab and the **Models** tab. The **Experiments** tab displays a list of all your experiments on the left side. By selecting your current experiment `HM_Dataset/binary_classification/Churn`, you will see all models trained under that experiment listed on the main page, as shown in Figure 3 below. 
 
 
 <p align="center">
   <img src="assets/mlfow_1.png" alt="Image" />
 </p>
-<p align="center"><em>Figure 1: Example of an MLFLow experiments tracking section.</em></p>
+<p align="center"><em>Figure 3: Example of an MLFLow experiments tracking section.</em></p>
 
 Clicking on a specific model (here `crawling-mole-592`) will direct you to its detailed page, where you can track its progress.
-If the model is still training, the `Overview` tab will indicate that its Status is `Running`, like shown in the Figure 2 below. 
+If the model is still training, the `Overview` tab will indicate that its Status is `Running`, like shown in the Figure 4 below. 
 
 
 <p align="center">
   <img src="assets/mlflow_2.png" alt="Image" />
 </p>
-<p align="center"><em>Figure 2: Example of an MLFLow experiments overview.</em></p>
+<p align="center"><em>Figure 4: Example of an MLFLow experiment overview.</em></p>
 
 
 To analyze a model's  performance metrics in real time, navigate to the **Model Metrics** tab, where you can see key training statistics such as **training loss**, **validation loss**, **evaluation metrics**, and **learning rate** updates. These metrics are continuously updated as training progresses, allowing you to track improvements and detect any potential issues.
@@ -46,7 +46,7 @@ To analyze a model's  performance metrics in real time, navigate to the **Model 
 <p align="center">
   <img src="assets/mlflow_3.png" alt="Image" />
 </p>
-<p align="center"><em>Figure 3: Example of an MLFLow experiment metric tracking.</em></p>
+<p align="center"><em>Figure 5: Example of an MLFLow experiment metric tracking.</em></p>
 
 As shown in the image, there are several key metrics displayed during the model training process that can help you evaluate the model's performance:
 * `train_loss`: This plot shows how the model's error decreases over time on the training data, indicating its progress in learning. A decreasing train loss signifies that the model is improving its ability to predict the training data.
