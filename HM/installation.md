@@ -458,7 +458,7 @@ REMOVE '@"HM_DB"."HM_SCHEMA"."HM_STAGE"/customers.csv.gz'
 REMOVE '@"HM_DB"."HM_SCHEMA"."HM_STAGE"/articles.csv.gz'
 REMOVE '@"HM_DB"."HM_SCHEMA"."HM_STAGE"/transactions_train.csv.gz'
 ```
-<details>
+<details>```
 
 ## Create the Training Tables for the Churn and Purchase Tasks
 
