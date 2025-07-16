@@ -2,7 +2,7 @@
 
 ## 📈 MLflow
 
-If desired, you can visit [MLflow](https://mlflow.org/) to monitor the training process in real time, including loss trends and evaluation metrics. For a detailed guide on how to use MLflow with our Streamlit App, refer to the [instructions](/MLflow.md) here.
+If desired, you can visit [MLflow](https://mlflow.org/) to monitor the training process in real time, including loss trends and evaluation metrics. For a detailed guide on how to use MLflow with our GNN Engine, refer to the [instructions](/MLflow.md) here.
 
 To access the MLflow page from a Snowflake notebook you can run:
 
