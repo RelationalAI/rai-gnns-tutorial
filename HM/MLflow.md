@@ -4,7 +4,7 @@
 
 If desired, you can visit [MLflow](https://mlflow.org/) to monitor the training process in real time, including loss trends and evaluation metrics. For a detailed guide on how to use MLflow with our Streamlit App, refer to the [instructions](/MLflow.md) here.
 
-To access the MLflow page you can run:
+To access the MLflow page from a Snowflake notebook you can run:
 
 ```python
 connector._get_gnn_engine_details(engine_name)
