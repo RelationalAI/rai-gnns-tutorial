@@ -16,6 +16,7 @@
 In this tutorial, we’ll demonstrate how to use the **RelationalAI Native App**, available through the **Snowflake Marketplace**, to solve two common business challenges by leveraging our **graph neural networks' predictive reasoning capabilities (GNNs)**:
 
 -**Customer Churn Prediction** – Predict whether a customer is likely to make a purchase in the upcoming week.
+
 -**Purchase Recommendations** – Recommend relevant products (articles) tailored to each customer.
 
 ---
