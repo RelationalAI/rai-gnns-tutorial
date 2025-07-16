@@ -42,8 +42,7 @@ If the model is still training, the `Overview` tab will indicate that its Status
 <p align="center"><em>Figure 2: Example of an MLFLow experiment overview.</em></p>
 
 
-To analyze a model's  performance metrics in real time, navigate to the **Model Metrics** tab, where you can see key training statistics such as **training loss**, **validation loss**, **evaluation metrics**, and **learning rate** updates. These metrics are continuously updated as training progresses, allowing you to track improvements and detect any potential issues.
-
+To analyze a model's  performance metrics in real time, navigate to the **Model Metrics** tab, where you can see key training statistics such as **training loss**, **validation loss**, **evaluation metrics**, and **learning rate** updates. These metrics are continuously updated as training progresses, allowing you to track improvements and detect any potential issues. Here is a figure showcasing an example of an MLFLow experiment metric tracking where we trained the model for 4 epochs:
 
 <p align="center">
   <img src="assets/mlflow_3.png" alt="Image" />
