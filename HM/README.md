@@ -24,7 +24,7 @@ In this tutorial, we’ll demonstrate how to use the **RelationalAI Native App**
 
 ## 🛠️ Installation
 
-To set up all the necessary data, tables, schemas, etc. for the two H&M examples you will need to go through the [installation](/HM/installation.md) guide. Once this is completed you are able to run the Python Notebooks that were installed as part of the process.
+To prepare the necessary data, tables, schemas, and other components for the two H&M use cases, follow the steps outlined in the [installation guide](/HM/installation.md). Once setup is complete, you can run the **Python notebooks** that were installed as part of the process.
 
 ---
 <a name="-dataset-schema"></a>
