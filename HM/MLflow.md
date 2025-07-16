@@ -60,7 +60,7 @@ After training multiple models, once you have identified a **satisfactory** one,
 <p align="center">
   <img src="assets/mlflow_6.png" alt="Image" />
 </p>
-<p align="center"><em>Figure 4: On the desired MLFLow experiment page click on Register model.</em></p>
+<p align="center"><em>Figure 4: On the desired MLfLow model page click on Register model.</em></p>
 
 You will then be presented with two options. The first option allows you to create a new model by clicking on **"+ Create New Model"**, where you can specify a **custom name** for it. The second option lets you register the model **as a new version of an existing registered model**, in which case the newly trained model will be added as a version update to the selected model. After selecting the appropriate option, click **"Register"** to finalize the process.
 
