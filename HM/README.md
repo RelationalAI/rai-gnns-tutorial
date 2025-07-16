@@ -44,6 +44,7 @@ This schema consists of three tables:
 </p>
 <p align="center"><em>Figure 1: Sample schema of the H&M dataset.</em></p>
 
+Based on this **schema**, we can define a **graph** where **each row** in **each table** corresponds to **a node**. This results in `customer`, `article`, and `transaction` nodes. **Edges** between nodes are defined by **primary–foreign key relationships**—for example, a **customer performs a transaction** (connecting a `customer` node to a `transaction` node), and an **article is purchased in a transaction** (connecting an `article` node to a `transaction` node).
 
 ---
 <a name="-churn-prediction"></a>
