@@ -26,11 +26,12 @@ This will return a table with the engine details:
   <img src="/HM/assets/mlflow_4.png" alt="stage" style="width:950px;">
 </picture>
 
-Scroll to the right and locate the **ingress URL** for the **mlflowendpoint** in the **Settings** cell. Use the URL to navigate to the MLflow page, then log in using your Snowflake credentials.
-
+Scroll to the right and locate the **ingress URL** for the **mlflowendpoint** in the **Settings** cell:
 <picture>
   <img src="/HM/assets/mlflow_5.png" alt="stage" style="width:950px;">
 </picture>
+
+Use the URL to navigate to the MLflow page, then authenticate using your Snowflake credentials.
 
 Upon opening MLflow, you will see two main tabs: the **Experiments** tab and the **Models** tab. The **Experiments** tab displays a list of all your experiments on the left side. By selecting your current experiment, identified by its `DatasetName/TaskType/TaskName`, you will see all models trained under that experiment listed on the main page. Clicking on a specific model will direct you to its detailed page, where you can track its progress. 
 
