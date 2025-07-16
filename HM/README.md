@@ -37,7 +37,7 @@ This schema consists of three tables:
 
 - **ARTICLES** Table – Each row represents a product (article), containing attributes like product name, product type, and color. The table's primary key is the `article_id` column, which uniquely identifies each article. An article can be thought of as a product. 
 
-- **TRANSACTIONS** Table – Each row describes a transaction, capturing which customer purchased which article, on what date, and at what price. This table references the `CUSTOMERS` and `ARTICLES` tables through the foreign key columns `customer_id` and `article_id`, respectively. There is no primary key for this table. Note that the date column (`t_dat`) is important. In a typical scenario where one would use shallow models (e.g,. XGBoost) to construct a feature matrix, special care needs to be taken to avoid time leakage (for example, by masking future transactions). As we will see later, by specifying the date column as a `time` column, GNNs take care of the time leakage problems.
+- **TRANSACTIONS** Table – Each row describes a transaction, capturing which customer purchased which article, on what date, and at what price. This table references the `CUSTOMERS` and `ARTICLES` tables through the foreign key columns `customer_id` and `article_id`, respectively. There is no primary key for this table.
 
 <p align="center">
   <img src="assets/schema.png" alt="Image" />
