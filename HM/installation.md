@@ -369,6 +369,9 @@ Once you have all the files in the stage you can now go ahead and import the dat
 
 For this you need to run the following commands in a Snowflake SQL Worksheet. For your convenience, all of the code is located in [import_data.sql](setup/3_import_data.sql).
 
+<details>
+  <summary>Click to expand code</summary>
+
 ```sql
 -- Script to load the H&M Personalized Fashion Recommendations dataset into Snowflake tables
 
@@ -455,6 +458,7 @@ REMOVE '@"HM_DB"."HM_SCHEMA"."HM_STAGE"/customers.csv.gz'
 REMOVE '@"HM_DB"."HM_SCHEMA"."HM_STAGE"/articles.csv.gz'
 REMOVE '@"HM_DB"."HM_SCHEMA"."HM_STAGE"/transactions_train.csv.gz'
 ```
+<details>
 
 ## Create the Training Tables for the Churn and Purchase Tasks
 
