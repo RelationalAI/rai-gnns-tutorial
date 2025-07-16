@@ -22,7 +22,7 @@ Scroll to the right and locate the **ingress URL** for the **mlflowendpoint** in
   <img src="/HM/assets/mlflow_5.png" alt="stage" style="width:950px;">
 </picture>
 
-Use the URL to navigate to the MLflow page, then log in using your Snowflake credentials.
+Use the URL to navigate to the MLflow page, then authenticate using your Snowflake credentials.
 
 Upon opening MLflow, you will see two main tabs: the **Experiments** tab and the **Models** tab. The **Experiments** tab displays a list of all your experiments on the left side. By selecting your current experiment `HM_Dataset/binary_classification/Churn`, you will see all models trained under that experiment listed on the main page, as shown in Figure 1 below. 
 
