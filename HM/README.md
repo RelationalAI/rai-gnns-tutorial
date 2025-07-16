@@ -73,7 +73,7 @@ To proceed, we must first create a **task table** that defines the recommendatio
 In our use case, the task table consists of three columns:
 
 * The `customer_id` column identifies the customer nodes for which the model will make predictions. These values must match the primary key values in the `CUSTOMERS` table.
-* The `article_id` column contains a list of `article IDs` representing the ground truth — the articles the customer actually purchased during the target week. These are the edges the GNN will learn to predict.
+* The `article_id` column contains a list of `article IDs` representing the ground truth — the articles the customer actually purchased during the target week. These are the edges the GNN will learn to predict. These values must match the primary key values in the `ARTICLES` table.
 * The `timestamp` column specifies the reference date. The model is expected to predict the articles that the customer will purchase in the seven days following this timestamp.
 
 This task formulation enables the model to learn personalized product recommendations that are both customer-specific and time-aware. We provide instructions for generating this task table in the [installation.md](/HM/installation.md).
