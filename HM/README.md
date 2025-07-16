@@ -70,7 +70,7 @@ To run this example you can use the [hm_churn_prediction.ipynb](/HM/for_stage/hm
 
 The second use case focuses on training a model that is able to generate personalized article recommendations for each customer. 
 
-In order to achieve that we are training the model to predict which articles a customer will purchase in the following week. This is a **link prediction task**, as we aim to predict edges between nodes of type `CUSTOMER` and `ARTICLE`. Specifically, this is a temporal link prediction task, where predictions depend on when the interaction occurs.
+In order to achieve that, we are training the model to predict which articles a customer will purchase in the following week. This is a **link prediction task**, as we aim to predict edges between nodes of type `CUSTOMER` and `ARTICLE`. Specifically, this is a temporal link prediction task, where predictions depend on when the interaction occurs.
 
 To proceed, we must first create a **task table** that defines the recommendation task. This table contains training and validation examples that the model will learn from. It serves as a structured representation of the problem by specifying the key entities and their interactions within a time window. Additionally, it includes a timestamp column to indicate when the prediction is being made, which is essential for temporal modeling.
 
