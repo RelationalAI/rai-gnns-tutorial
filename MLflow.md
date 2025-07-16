@@ -26,7 +26,7 @@ This will return a table with the engine details:
   <img src="/HM/assets/mlflow_4.png" alt="stage" style="width:950px;">
 </picture>
 
-Scroll to the right and locate the **ingress URL** for the **mlflowendpoint** in the **Settings** cell. Use the URL to navigate to the page, then log in using your Snowflake credentials.
+Scroll to the right and locate the **ingress URL** for the **mlflowendpoint** in the **Settings** cell. Use the URL to navigate to the MLflow page, then log in using your Snowflake credentials.
 
 <picture>
   <img src="/HM/assets/mlflow_5.png" alt="stage" style="width:950px;">
