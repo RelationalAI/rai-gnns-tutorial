@@ -2,7 +2,7 @@
 
 ## 📈 MLflow
 
-If desired, you can visit [MLflow](https://mlflow.org/) to monitor the training process in real time, including loss trends and evaluation metrics. For a detailed guide on how to use MLflow with the RelationalAI Native App, refer to the [instructions](/MLflow.md) here.
+If desired, you can visit [MLflow](https://mlflow.org/) to monitor the training process in real time, including loss trends and evaluation metrics. For a detailed guide on how to use MLflow with the RelationalAI Native App, refer to the [instructions](/Docs/MLflow.md) here.
 
 To access the MLflow page, inside a Snowflake notebook you can run:
 
