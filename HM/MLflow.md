@@ -2,7 +2,7 @@
 
 ## 📈 MLflow
 
-If desired, you can visit [MLflow](https://mlflow.org/) to monitor the training process in real time, including loss trends and evaluation metrics. For a detailed guide on how to use MLflow with our Streamlit App, refer to the instructions under the **"MLFlow"** Section of the [Detailed Documentation](#file-01_detaileddocumentation-md).
+If desired, you can visit [MLflow](https://mlflow.org/) to monitor the training process in real time, including loss trends and evaluation metrics. For a detailed guide on how to use MLflow with our Streamlit App, refer to the [instructions](/MLflow.md) here.
 
 Upon opening MLflow, you will see two main tabs: the **Experiments** tab and the **Models** tab. The **Experiments** tab displays a list of all your experiments on the left side. By selecting your current experiment `HM_Dataset/binary_classification/Churn`, you will see all models trained under that experiment listed on the main page. Clicking on a specific model (here `crawling-mole-592`) will direct you to its detailed page, where you can track its progress. 
 
