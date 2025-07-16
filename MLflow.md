@@ -14,7 +14,7 @@ Below, we provide an overview of these three key areas. For a comprehensive guid
 #### 🎯 Track real-time training metrics
 During training, you can monitor the training process in real time via the **MLflow** page.
 
-To access the MLflow page you can run:
+To access the MLflow page, inside a Snowflake notebook you can run:
 
 ```python
 connector._get_gnn_engine_details(engine_name)
