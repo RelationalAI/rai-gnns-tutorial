@@ -40,7 +40,7 @@ This schema consists of three tables:
 - **TRANSACTIONS** Table – Each row describes a transaction, capturing which customer purchased which article, on what date, and at what price. This table references the `CUSTOMERS` and `ARTICLES` tables through the foreign key columns `customer_id` and `article_id`, respectively. There is no primary key for this table.
 
 <p align="center">
-  <img src="assets/schema.png" alt="Image" />
+  <img src="assets/schema_hd.png" alt="Image" />
 </p>
 <p align="center"><em>Figure 1: Sample schema of the H&M dataset.</em></p>
 
