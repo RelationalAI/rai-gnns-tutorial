@@ -13,11 +13,10 @@
 
 ## 📘 Overview
 
+In this tutorial, we’ll demonstrate how to use the **RelationalAI Native App**, available through the **Snowflake Marketplace**, to solve two common business challenges by leveraging our **graph neural networks' predictive reasoning capabilities (GNNs)**:
 
-In the HM directory we include two examples of using the RelationalAI GNN app to train a Graph Neural Network (GNN) on the [H&M Personalized Fashion Recommendations](https://www.kaggle.com/competitions/h-and-m-personalized-fashion-recommendations). Specifically, we focus on 
-
-- the **customer churn prediction task**, where the goal is to determine whether a customer will make a purchase in the following week.
-- the **purchase recommendations task**, where the goal is to recommend suitable articles to each customer. 
+-**Customer Churn Prediction** – Predict whether a customer is likely to make a purchase in the upcoming week.
+-**Purchase Recommendations** – Recommend relevant products (articles) tailored to each customer.
 
 ---
 <a name="-installation"></a>
