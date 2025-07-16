@@ -66,15 +66,15 @@ To run this example you can use the [hm_churn_prediction.ipynb](/HM/for_stage/hm
 
 ## 🛒 Purchase Recommendation
 
-Using the H&M dataset, we can also train a model to recommend suitable articles to customers. In order to do that we are training a model to predict which articles a customer will purchase in the following week. This is a **link prediction task**, as we aim to predict edges between nodes of type CUSTOMER and ARTICLE. Specifically, this is a temporal link prediction task, where predictions depend on when the interaction occurs.
+Using the H&M dataset, we can also train a model to recommend suitable articles to customers. In order to do that we are training a model to predict which articles a customer will purchase in the following week. This is a **link prediction task**, as we aim to predict edges between nodes of type `CUSTOMER` and `ARTICLE`. Specifically, this is a temporal link prediction task, where predictions depend on when the interaction occurs.
 
 To proceed, we must first create a **task table** that defines the recommendation task. This table contains training and validation examples that the model will learn from. It serves as a structured representation of the problem by specifying the key entities and their interactions within a time window. Additionally, it includes a timestamp column to indicate when the prediction is being made, which is essential for temporal modeling.
 
 In our use case, the task table consists of three columns:
 
-* The customer_id column identifies the customer nodes for which the model will make predictions. These values must match the primary key values in the CUSTOMERS table.
-* The article_id column contains a list of article IDs representing the ground truth — the articles the customer actually purchased during the target week. These are the edges the GNN will learn to predict.
-* The timestamp column specifies the reference date. The model is expected to predict the articles that the customer will purchase in the seven days following this timestamp.
+* The `customer_id` column identifies the customer nodes for which the model will make predictions. These values must match the primary key values in the `CUSTOMERS` table.
+* The `article_id` column contains a list of `article IDs` representing the ground truth — the articles the customer actually purchased during the target week. These are the edges the GNN will learn to predict.
+* The `timestamp` column specifies the reference date. The model is expected to predict the articles that the customer will purchase in the seven days following this timestamp.
 
 This task formulation enables the model to learn personalized product recommendations that are both customer-specific and time-aware. We provide instructions for generating this task table in the [installation.md](/HM/installation.md).
 
