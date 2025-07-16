@@ -12,7 +12,7 @@ Below, we provide an overview of these three key areas. For a comprehensive guid
 
 <a name="track-real-time-training-metrics"></a>
 #### 🎯 Track real-time training metrics
-During training, you can monitor the training process in real time via the **MLflow** page ([MLflow Documentation](https://mlflow.org/docs/latest/index.html)).
+During training, you can monitor the training process in real time via the **MLflow** page.
 
 Upon opening MLflow, you will see two main tabs: the **Experiments** tab and the **Models** tab. The **Experiments** tab displays a list of all your experiments on the left side. By selecting your current experiment, identified by its `DatasetName/TaskType/TaskName`, you will see all models trained under that experiment listed on the main page. Clicking on a specific model will direct you to its detailed page, where you can track its progress. 
 
