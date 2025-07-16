@@ -57,4 +57,19 @@ As shown in the figure, there are several key metrics displayed during the model
 
 After training multiple models, once you have identified a **satisfactory** one, you can proceed with **registering it for future use**. After registering it, you can perform inference on new, unseen data with this model refering to it by its **name** and **version**. So, to register a model, first navigate to its page by selecting the appropriate experiment (here: `HM_Dataset/binary_classification/Churn`) and then the model within the Experiments tab. Once on the model’s page, click the **"Register Model"** button, located in the top-right corner, as shown in Figure 4.
 
+<p align="center">
+  <img src="assets/mlflow_6.png" alt="Image" />
+</p>
+<p align="center"><em>Figure 4: On the desired MLFLow experiment overview click on Register model.</em></p>
+
 You will then be presented with two options. The first option allows you to create a new model by clicking on **"+ Create New Model"**, where you can specify a **custom name** for it. The second option lets you register the model **as a new version of an existing registered model**, in which case the newly trained model will be added as a version update to the selected model. After selecting the appropriate option, click **"Register"** to finalize the process.
+
+<p align="center">
+  <img src="assets/mlflow_7.png" alt="Image" />
+</p>
+<p align="center"><em>Figure 5: Click on Create New Model.</em></p>
+
+<p align="center">
+  <img src="assets/mlflow_8.png" alt="Image" />
+</p>
+<p align="center"><em>Figure 6: Enter a custom name to specify your model.</em></p>
