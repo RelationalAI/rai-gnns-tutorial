@@ -14,6 +14,8 @@ Below, we provide an overview of these three key areas. For a comprehensive guid
 #### 🎯 Track real-time training metrics
 During training, you can monitor the training process in real time via the **MLflow** page.
 
+To access the MLflow page 
+
 Upon opening MLflow, you will see two main tabs: the **Experiments** tab and the **Models** tab. The **Experiments** tab displays a list of all your experiments on the left side. By selecting your current experiment, identified by its `DatasetName/TaskType/TaskName`, you will see all models trained under that experiment listed on the main page. Clicking on a specific model will direct you to its detailed page, where you can track its progress. 
 
 If the model is still training, the **Overview** tab will indicate that its **Status** is **Running**. To analyze its performance metrics in real time, navigate to the **Model Metrics** tab, where you can see key training statistics such as **training loss**, **validation loss**, **evaluation metrics**, and **learning rate updates**. These metrics are continuously updated as training progresses, allowing you to track improvements and detect any potential issues.
@@ -26,9 +28,9 @@ In the **Overview** tab, the **Status** will now be marked as **Finished**, indi
 
 Typically, the training loss should decrease as the model trains for more epochs, while the validation loss may initially decrease and then stabilize or slightly increase if overfitting occurs. Similarly, the validation metric (e.g., accuracy or F1 score) should generally improve during training but may plateau or decline if the model starts overfitting.Training should ideally finish when the model reaches a balance between minimizing training loss and maintaining strong validation performance. 
 
-Additionally, in the **Artifacts** tab, you will find stored files related to your model, such as the **dataset configuration** from [Step 2: Dataset Configuration](#step-2-dataset-config), the **GNN system configuration** from  [Step 3: GNN System Configuration](#step-3-gnn-system-configuration), and the trained model’s **weights**.
+Additionally, in the **Artifacts** tab, you will find stored files related to your model, such as the **dataset configuration**, the **GNN system configuration**, and the trained model’s **weights**.
 
-After training multiple models, once you have identified a satisfactory one, you can proceed with registering it for future use. After registering it, you can choose the **Use an Existing Model** option in the [Step 1: Home Page](#option2-step-1-home-page) of the Streamlit App to perform inference on new, unseen data with this model. So, to register a model, first navigate to its page by selecting the appropriate experiment and then the model within the **Experiments** tab. Once on the model’s page, click the **"Register Model"** button, located in the top-right corner. 
+After training multiple models, once you have identified a satisfactory one, you can proceed with registering it for future use. After registering it, you can perform inference on new, unseen data with this model refering to it by its **name** and **version**. So, to register a model, first navigate to its page by selecting the appropriate experiment and then the model within the **Experiments** tab. Once on the model’s page, click the **"Register Model"** button, located in the top-right corner. 
 
 You will then be presented with two options. The first option allows you to create a new model by clicking on **"+ Create New Model"**, where you can specify a custom name for it. The second option lets you **register the model as a new version of an existing registered model**, in which case the newly trained model will be added as a version update to the selected model. After selecting the appropriate option, click **"Register"** to finalize the process. 
 
