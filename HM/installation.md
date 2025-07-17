@@ -187,7 +187,7 @@ USE SCHEMA identifier($schema_purchase_full_name);
 
 ### Create a Stage
 
-You will need the stage to upload the Python Notebooks as well as the raw csv data that will then imported into Snowflake Tables. You can create a stage as follows:
+You will need the stage to upload the Python Notebooks as well as the raw csv data that will then be imported into Snowflake Tables. You can create a stage as follows:
 
 ```sql
 -- create a stage
