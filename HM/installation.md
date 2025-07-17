@@ -5,7 +5,7 @@ The following section provides installation instructions for the code used to so
 
 ## tl;dr
 
-The process below explains step by step how to create the necessary database, warehouse, stage, notebooks etc. The tl;dr version of this process is the following, assuming you already have a Snowflake account and you are logged in:
+The process below explains, step by step, how to create the necessary database, warehouse, stage, notebooks, and other components. It’s important to follow these steps in the exact order. The tl;dr version of this process is as follows, assuming you already have a Snowflake account and are logged in:
 
 1. In a SQL Worksheet, run [create_assets.sql](/HM/setup/1_create_assets.sql)
 2. Locally on your computer, run the Python script [get_data.py](/HM/setup/2_get_data.py)
