@@ -61,10 +61,11 @@ ALTER USER HM_ADMIN SET DEFAULT_ROLE=SYSADMIN;
 
 ## Getting Access to the RelationalAI Native App
 
-For the use cases you will need to have access to the RelationalAI Native App.
-For both apps, you can contact Nikolaos Vasiloglou `nik.vasiloglou@relational.ai` and Pigi Kouki `pigi.kouki@relational.ai` if you need assistance.
+To run the use cases, you’ll need access to the RelationalAI Native App. You can request access via the Snowflake Marketplace. When submitting your request, be sure to include a note indicating that you’re interested in the app’s predictive reasoning capabilities using graph neural networks (GNNs).
 
-You will need your account to have the [RAI Native App for Snowflake](https://docs.relational.ai/manage/install) installed. The link provides detailed instructions on how to install the App. Note that you will need to be a user with either `ORGADMIN` or `ACCOUNTADMIN` privileges and it requires notification from Relational AI as to when your access is enabled for your account. Please ensure to specify that you need access to the experimental version of the RelationalAI Native App which has the `GNN` features available.
+Once your request is approved (you will receive email notification by RAI), follow the instructions [here](https://docs.relational.ai/manage/install) to install the RAI Native App.  Note that you will need to be a user with either ORGADMIN or ACCOUNTADMIN privileges to do the installation. 
+
+In case you need any assistance please reach out to Pigi Kouki pigi.kouki@relational.ai  or Ilias Fountalis ilias.fountalis@relational.ai 
 
 ## Building the `rai_gnns_experimental.zip` Package
 
