@@ -72,7 +72,7 @@ In case you need any assistance please reach out to Pigi Kouki pigi.kouki@relati
 For traininig models and making predictions you will be working through a Snowflake Notebook and you will need to access certain RelationalAI services through the GNN Python SDK. To this end, you will need the `rai_gnns_experimental.zip` file.
 
 > [!WARNING]
-> If you do not have access to the RelationalAI internal code repository you should ask a RelationalAI representative (Nikolaos Vasiloglou `nik.vasiloglou@relational.ai` and Pigi Kouki `pigi.kouki@relational.ai`) to give you the latest version of the `rai_gnns_experimental.zip` file. For your convenience a version has been provided in the [/for_stage](/for_stage/) folder but it is advisable to ask a RelationalAI representative for the latest version.
+> If you do not have access to the RelationalAI internal code repository you should ask a RelationalAI representative (Pigi Kouki pigi.kouki@relational.ai and Ilias Fountalis  ilias.fountalis@relational.ai to give you the latest version of the rai_gnns_experimental.zip file. 
 
 If you have access to RelationalAI's internal code repository you can build the `rai_gnns_experimental.zip` package from scratch by following the steps below in a shell.
 
