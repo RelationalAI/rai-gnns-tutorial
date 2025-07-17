@@ -210,7 +210,13 @@ GRANT CREATE NOTEBOOK ON SCHEMA identifier($schema_full_name) TO ROLE identifier
 
 The use cases of this tutorial are based on the [**H&M Personalized Fashion Recommendations**](https://www.kaggle.com/competitions/h-and-m-personalized-fashion-recommendations/overview). You will need to download the data from Kaggle and then upload it to the Snowflake stage you previously created. For that you have to follow these steps:
 
-1. Go to the **Rules** page of the [**H&M Personalized Fashion Recommendations**](https://www.kaggle.com/competitions/h-and-m-personalized-fashion-recommendations/rules) competition and accept the rules. You should then see a confirmation message like this:
+1. Go to the **Rules** page of the [**H&M Personalized Fashion Recommendations**](https://www.kaggle.com/competitions/h-and-m-personalized-fashion-recommendations/rules).  Click on “Late Submission”. You may be asked by Kaggle to provide your phone number to authenticate. Once this is done, you then have to accept the terms and conditions. Click on “I understand and Accept”  as shown in the screenshot below.
+
+<picture>
+  <img src="assets/5a-kaggle-rules.png" alt="stage" style="width:550px;">
+</picture>
+
+You should then see a confirmation message like this:
 
 <picture>
   <img src="assets/5-kaggle-rules.png" alt="stage" style="width:550px;">
