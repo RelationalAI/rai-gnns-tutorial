@@ -1,7 +1,7 @@
 # Installation Instructions
 
 
-In the following you will find installation instructions for the code of the different H&M use cases.
+The following section provides installation instructions for the code used to solve the churn prediction and purchase recommendation tasks using the H&M dataset.
 
 ## tl;dr
 
