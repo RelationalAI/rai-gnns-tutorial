@@ -238,7 +238,12 @@ conda activate snowflake_kaggle_connector
 
 pip install snowflake-connector-python kaggle python-dotenv pandas
 ```
-5. In the same directory you put the **get_data.py**, create a **.env** file defining the following variables:
+
+5. In the same directory where you placed **get_data.py**, create a **.env** file with the following environment variables:
+
+- `KAGGLE_USERNAME` and `KAGGLE_KEY` — from your downloaded kaggle.json file
+- `SNOWFLAKE_USER`, `SNOWFLAKE_PASSWORD`, and `SNOWFLAKE_ACCOUNT` — for connecting to Snowflake
+- Leave the remaining variables as they are.
 
 ```sh
 KAGGLE_USERNAME = <username from kaggle.json>
@@ -256,12 +261,6 @@ SNOWFLAKE_STAGE=HM_STAGE
 ```sh
 python 2_get_data.py
 ```
-
-After running the script your local directory should look like this:
-
-<picture>
-  <img src="assets/6-local-dir.png" alt="stage" style="width:250px;">
-</picture>
 
 In this script, we first load the required variables, authenticate to Kaggle and create a connector to our Snowflake account:
 
@@ -284,7 +283,7 @@ conn = snowflake.connector.connect(
     role=os.getenv("SNOWFLAKE_ROLE")
 )
 ```
-Then we create a directory for the data, download the three H&M tables from Kaggle and unzip them:
+Then we create a directory for the data (`hm-tables`), download the three H&M tables from Kaggle and unzip them:
 
 ```python
 # Define paths and dataset information
