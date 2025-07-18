@@ -17,21 +17,10 @@ During training, you can monitor the training process in real time via the **MLf
 To access the MLflow page, inside a Snowflake notebook you can run:
 
 ```python
-connector._get_gnn_engine_details(engine_name)
+connector.get_gnn(engine_name)["settings"]["mlflowendpoint"]
 ```
 
-This will return a table with the engine details:
-
-<picture>
-  <img src="/HM/assets/mlflow_4.png" alt="stage" style="width:950px;">
-</picture>
-
-Scroll to the right and locate the **ingress URL** for the **mlflowendpoint** in the **Settings** cell:
-<picture>
-  <img src="/HM/assets/mlflow_5.png" alt="stage" style="width:950px;">
-</picture>
-
-Use the URL to navigate to the MLflow page, then authenticate using your Snowflake credentials.
+This will return a URL that you can use to access the MLflow page, where you'll authenticate with your Snowflake credentials.
 
 <a name="track-real-time-training-metrics"></a>
 #### 🎯 Track real-time training metrics
