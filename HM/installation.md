@@ -84,7 +84,7 @@ cd gnn-learning-engine
 zip -r rai_gnns_experimental rai_gnns_experimental
 ```
 
-Once the process completes (or you directly got the file from [/for_stage](/for_stage/) or a RelationalAI representative) you will now have a file called `rai_gnns_experimental.zip`. Keep this file as we will upload it later on to a Snowflake stage.
+Once the process completes (or you directly got the file from [/for_stage](/HM/for_stage/) or a RelationalAI representative) you will now have a file called `rai_gnns_experimental.zip`. Keep this file as we will upload it later on to a Snowflake stage.
 
 ## Set up Database Objects
 
