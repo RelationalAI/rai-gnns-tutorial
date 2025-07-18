@@ -258,6 +258,8 @@ SNOWFLAKE_ROLE=ACCOUNTADMIN
 SNOWFLAKE_STAGE=HM_STAGE
 ```
 6. Run the **get_data.py** script.
+If your Snowflake account has Multi-Factor Authentication (MFA) enabled, it's recommended to authenticate using **DUO**. When you run the script, you’ll receive a DUO notification prompting you to approve the login. Once approved, the script will proceed automatically.
+   
 ```sh
 python 2_get_data.py
 ```
