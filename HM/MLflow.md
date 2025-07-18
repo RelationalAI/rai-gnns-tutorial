@@ -7,22 +7,10 @@ If desired, you can visit [MLflow](https://mlflow.org/) to monitor the training 
 To access the MLflow page, inside a Snowflake notebook you can run:
 
 ```python
-connector._get_gnn_engine_details(engine_name)
+connector.get_gnn(engine_name)["settings"]["mlflowendpoint"]
 ```
 
-This will return a table with the engine details:
-
-<picture>
-  <img src="/HM/assets/mlflow_4.png" alt="stage" style="width:950px;">
-</picture>
-
-Scroll to the right and locate the **ingress URL** for the **mlflowendpoint** in the **Settings** cell:
-
-<picture>
-  <img src="/HM/assets/mlflow_5.png" alt="stage" style="width:950px;">
-</picture>
-
-Use the URL to navigate to the MLflow page, then authenticate using your Snowflake credentials.
+This will return a URL that you can use to access the MLflow page, where you'll authenticate with your Snowflake credentials.
 
 Upon opening MLflow, you will see two main tabs: the **Experiments** tab and the **Models** tab. The **Experiments** tab displays a list of all your experiments on the left side. By selecting your current experiment `HM_Dataset/binary_classification/Churn`, you will see all models trained under that experiment listed on the main page, as shown in Figure 1 below. 
 
