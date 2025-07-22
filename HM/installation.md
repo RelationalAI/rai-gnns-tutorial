@@ -742,33 +742,12 @@ CREATE OR REPLACE NOTEBOOK purchase_recommendations
     ;
 ```
 
-### Setting up Packages and External Access for the Notebooks
+### Loading Python Packages for the Notebooks
 
 > [!NOTE]
 > You need to do the following for every notebook that you would like to use
 
-#### External Access
-
-Once you have created the notebooks, you need to set up external access for them.
-This is needed by the RelationalAI Native App in order to communicate with the RelationalAI backend.
-
-More specifically, you will need to enable the `S3_RAI_INTERNAL_BUCKET_EGRESS_INTEGRATION`.
-
-For this, you need to click on the `...` on the top right of the page when viewing a Notebook and then on `Notebook settings`:
-
-<picture>
-  <img src="assets/10-notebook-settings.jpg" alt="stage" style="width:350px;">
-</picture>
-
-Next, you need to click on the  toggle-on the `External access` tab on top and toggle the `S3_RAI_INTERNAL_BUCKET_EGRESS_INTEGRATION` to on. Next click `Save`.
-
-<picture>
-  <img src="assets/11-external-access.jpg" alt="stage" style="width:350px;">
-</picture>
-
-#### Loading Python Packages
-
-The Notebooks containing the code for the various use cases use some Python packages.
+The Notebooks containing the code for the two tasks use some Python packages.
 These packages need to be installed before the Notebook can run.
 
 To install such packages you should click on the top `Packages` and then type the name of each package in the`Anaconda Packages` search box and selecting the package. You should install the following packages:
