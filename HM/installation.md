@@ -707,6 +707,8 @@ GRANT CREATE TABLE ON ALL SCHEMAS IN DATABASE HM_DB TO APPLICATION RELATIONALAI;
 
 </details>
 
+After this step is complete, you will see newly created `TRAIN`, `VALIDATION`, and `TEST` tables under the `HM_CHURN` and `HM_PURCHASE` schemas — each corresponding to one of the tasks.
+
 ## Create Notebooks
 
 Next, you will create the notebooks based on the `.ipynb` sources that you uploaded on stage.
