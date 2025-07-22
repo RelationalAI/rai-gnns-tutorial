@@ -239,11 +239,11 @@ conda activate snowflake_kaggle_connector
 pip install snowflake-connector-python kaggle python-dotenv pandas
 ```
 
-5. In the same directory where you placed **get_data.py**, create a **.env** file with the following environment variables:
+5. In the same directory where you placed **get_data.py**, create a **.env** file defining the following environment variables:
 
 - `KAGGLE_USERNAME` and `KAGGLE_KEY` — from your downloaded kaggle.json file
 - `SNOWFLAKE_USER`, `SNOWFLAKE_PASSWORD`, and `SNOWFLAKE_ACCOUNT` — for connecting to Snowflake
-- Leave the remaining variables as they are.
+- Keep the remaining variables as they appear below:
 
 ```sh
 KAGGLE_USERNAME = <username from kaggle.json>
