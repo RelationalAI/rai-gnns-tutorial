@@ -468,6 +468,8 @@ REMOVE '@"HM_DB"."HM_SCHEMA"."HM_STAGE"/transactions_train.csv.gz'
 ```
 </details>
 
+After this step is complete, you will be able to see the imported tables listed under `HM_SCHEMA > Tables` in your Snowflake environment.
+As a final cleanup step, we also remove the ZIP files from the stage since they are no longer needed.
 
 ## Create the Training Tables for the Churn and Purchase Tasks
 
