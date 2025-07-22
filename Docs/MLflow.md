@@ -17,7 +17,7 @@ During training, you can monitor the training process in real time via the **MLf
 To access the MLflow page, inside a Snowflake notebook you can run:
 
 ```python
-connector.get_gnn(engine_name)["settings"]["mlflowendpoint"]
+connector.mlflow_session_url
 ```
 
 This will return a URL that you can use to access the MLflow page, where you'll authenticate with your Snowflake credentials.
