@@ -471,7 +471,9 @@ REMOVE '@"HM_DB"."HM_SCHEMA"."HM_STAGE"/transactions_train.csv.gz'
 
 ## Create the Training Tables for the Churn and Purchase Tasks
 
-Now that you have the three H&M tables imported in Snowflake, you can create the training tables for the task. For this you need to run the following commands in a Snowflake SQL Worksheet. For your convenience, all of the code is located in [create_tasks.sql](setup/4_create_tasks.sql).
+Now that the three H&M tables have been imported into Snowflake, we can create the training tables for the tasks. Each task — churn prediction and purchase recommendation — requires different data splits. The commands below handle both the creation of task-specific training tables and the generation of their respective splits (train, validation, and test).
+
+Run the following commands in a Snowflake SQL Worksheet. For your convenience, all of the code is located in [create_tasks.sql](setup/4_create_tasks.sql).
 
 <details>
   <summary>create_tasks.sql</summary>
