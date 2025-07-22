@@ -710,8 +710,9 @@ GRANT CREATE TABLE ON ALL SCHEMAS IN DATABASE HM_DB TO APPLICATION RELATIONALAI;
 After this step is complete, you will see newly created `TRAIN`, `VALIDATION`, and `TEST` tables under the `HM_CHURN` and `HM_PURCHASE` schemas — each corresponding to one of the tasks.
 
 Your database should now look like this:
+
 <picture>
-  <img src="assets/7-database-ready.png" alt="stage" style="width:300px;">
+  <img src="assets/7-database-ready.png" alt="stage" style="width:200px;">
 </picture>
 
 ## Create Notebooks
