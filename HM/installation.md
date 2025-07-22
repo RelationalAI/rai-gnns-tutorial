@@ -742,7 +742,9 @@ CREATE OR REPLACE NOTEBOOK purchase_recommendations
     ;
 ```
 
-### Loading Python Packages for the Notebooks
+### Setting up Packages for the Notebooks
+
+#### Loading Python Packages
 
 > [!NOTE]
 > You need to do the following for every notebook that you would like to use
