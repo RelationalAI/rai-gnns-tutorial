@@ -65,7 +65,9 @@ To run the use cases, you’ll need access to the RelationalAI Native App. You c
 
 Once your request is approved (you will receive email notification by RAI), follow the instructions [here](https://docs.relational.ai/manage/install) to install the RAI Native App.  Note that you will need to be a user with either ORGADMIN or ACCOUNTADMIN privileges to do the installation. 
 
-In case you need any assistance please reach out to Pigi Kouki pigi.kouki@relational.ai  or Ilias Fountalis ilias.fountalis@relational.ai 
+If you have already installed the RelationalAI Native App reach out to Pigi Kouki pigi.kouki@relational.ai or Ilias Fountalis ilias.fountalis@relational.ai to request enabling the predictive reasoning feature flag.
+
+In case you need any assistance please reach out to Pigi Kouki or Ilias Fountalis.
 
 ## Building the `rai_gnns_experimental.zip` Package
 
@@ -801,3 +803,4 @@ You can now pick a Python Notebook from the Notebooks section on the left in Sno
 <picture>
   <img src="assets/notebooks.png" alt="stage" style="width:600px;">
 </picture>
+
