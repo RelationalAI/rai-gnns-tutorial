@@ -1,6 +1,6 @@
 # GNN Tutorial: H&M Dataset
 
-⚠️ **Attention:** [`rai_gnns_experimental.zip`](stage/rai_gnns_experimental.zip) was updated on **15 Aug 2025** — please re-download the latest version.
+⚠️ **Attention:** [`rai_gnns_experimental.zip`](for_stage/rai_gnns_experimental.zip) was updated on **15 Aug 2025** — please re-download the latest version.
 
 ## Table of Contents
 
