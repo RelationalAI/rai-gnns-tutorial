@@ -34,31 +34,27 @@ DROP WAREHOUSE IF EXISTS identifier($wh_name);
 -- create role
 CREATE ROLE IF NOT EXISTS identifier($role_name);
 
+USE ROLE identifier($role_name);
+
 -- create a database
 CREATE DATABASE IF NOT EXISTS identifier($db_name);
-GRANT OWNERSHIP ON DATABASE identifier($db_name) TO ROLE identifier($role_name) COPY CURRENT GRANTS;
 USE DATABASE identifier($db_name);
 
 -- create warehouse
 CREATE OR REPLACE WAREHOUSE identifier($wh_name) WITH WAREHOUSE_SIZE = $wh_size;
-GRANT USAGE ON WAREHOUSE identifier($wh_name) TO ROLE identifier($role_name);
 
 -- create schemas
 CREATE SCHEMA IF NOT EXISTS identifier($schema_full_name);
-GRANT USAGE ON SCHEMA identifier($schema_full_name) TO ROLE identifier($role_name);
 USE SCHEMA identifier($schema_full_name);
 
 CREATE SCHEMA IF NOT EXISTS identifier($schema_churn_full_name);
-GRANT USAGE ON SCHEMA identifier($schema_churn_full_name) TO ROLE identifier($role_name);
 USE SCHEMA identifier($schema_churn_full_name);
 
 CREATE SCHEMA IF NOT EXISTS identifier($schema_purchase_full_name);
-GRANT USAGE ON SCHEMA identifier($schema_purchase_full_name) TO ROLE identifier($role_name);
 USE SCHEMA identifier($schema_purchase_full_name);
 
 -- create a stage
 CREATE STAGE IF NOT EXISTS identifier($stage_full_name) DIRECTORY = ( ENABLE = true );
-GRANT READ ON STAGE identifier($stage_full_name) TO ROLE identifier($role_name);
 
 -- privilege for notebook
 GRANT CREATE NOTEBOOK ON SCHEMA identifier($schema_full_name) TO ROLE identifier($role_name);
