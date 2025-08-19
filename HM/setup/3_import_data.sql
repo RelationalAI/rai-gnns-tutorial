@@ -1,6 +1,6 @@
 -- Script to load the H&M Personalized Fashion Recommendations dataset into Snowflake tables
 
-USE ROLE ACCOUNTADMIN;
+USE ROLE SYSADMIN;
 USE DATABASE HM_DB;
 USE SCHEMA HM_SCHEMA;
 USE WAREHOUSE HM_WH;
