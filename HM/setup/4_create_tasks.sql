@@ -211,6 +211,3 @@ SELECT
 FROM joined
 GROUP BY timestamp, "customer_id"
 ORDER BY RANDOM();
--- grant write access to write results, we encourage the user to select specific schemas
--- to give write access to
-GRANT CREATE TABLE ON ALL SCHEMAS IN DATABASE HM_DB TO APPLICATION RELATIONALAI;
