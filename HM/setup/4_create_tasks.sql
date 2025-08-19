@@ -22,7 +22,7 @@ SET purchase_train_table_name = $schema_purchase_full_name||'.'||'train';
 SET purchase_validation_table_name = $schema_purchase_full_name||'.'||'validation';
 SET purchase_test_table_name = $schema_purchase_full_name||'.'||'test';
 
-USE ROLE ACCOUNTADMIN;
+USE ROLE SYSADMIN;
 USE DATABASE IDENTIFIER($db_name);
 
 -- CHURN TASK
@@ -211,12 +211,6 @@ SELECT
 FROM joined
 GROUP BY timestamp, "customer_id"
 ORDER BY RANDOM();
-
--- here we grant access to all schemas and tables, you might want to
--- select specific tables and schemas to grant access to
-GRANT USAGE ON DATABASE HM_DB TO APPLICATION RELATIONALAI;
-GRANT USAGE ON ALL SCHEMAS IN DATABASE HM_DB TO APPLICATION RELATIONALAI;
-GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN DATABASE HM_DB TO APPLICATION RELATIONALAI;
 -- grant write access to write results, we encourage the user to select specific schemas
 -- to give write access to
 GRANT CREATE TABLE ON ALL SCHEMAS IN DATABASE HM_DB TO APPLICATION RELATIONALAI;
