@@ -71,22 +71,9 @@ In case you need any assistance please reach out to Pigi Kouki or Ilias Fountali
 
 ## Building the `rai_gnns_experimental.zip` Package
 
-For traininig models and making predictions you will be working through a Snowflake Notebook and you will need to access certain RelationalAI services through the GNN Python SDK. To this end, you will need the `rai_gnns_experimental.zip` file.
+For traininig models and making predictions you will be working through a Snowflake Notebook and you will need to access certain RelationalAI services through the GNN Python SDK. To this end, you will need the `rai_gnns_experimental.zip` file. You can download it from [here](https://rai-gnns-wheels.s3.us-east-1.amazonaws.com/folders/latest/rai_gnns_experimental.zip).
 
-> [!WARNING]
-> If you do not have access to the RelationalAI internal code repository you should ask a RelationalAI representative (Pigi Kouki pigi.kouki@relational.ai and Ilias Fountalis  ilias.fountalis@relational.ai) to give you the latest version of the rai_gnns_experimental.zip file. For your convenience a version has been provided in the [/for_stage](/HM/for_stage/) folder but it is advisable to ask a RelationalAI representative for the latest version.
-
-If you have access to RelationalAI's internal code repository you can build the `rai_gnns_experimental.zip` package from scratch by following the steps below in a shell.
-
-```sh
-git clone https://github.com/RelationalAI/gnn-learning-engine.git
-
-cd gnn-learning-engine
-
-zip -r rai_gnns_experimental rai_gnns_experimental
-```
-
-Once the process completes (or you directly got the file from [/for_stage](/HM/for_stage/) or a RelationalAI representative) you will now have a file called `rai_gnns_experimental.zip`. Keep this file as we will upload it later on to a Snowflake stage.
+Keep this file as we will upload it later on to a Snowflake stage.
 
 ## Set up Database Objects
 
@@ -357,9 +344,9 @@ In the following window you will need to upload the following files:
 * [`environment.yml`](/HM/for_stage/environment.yml)
 * [`hm_churn_prediction.ipynb`](/HM/for_stage/hm_churn_prediction.ipynb)
 * [`hm_purchase_recommendations.ipynb`](/HM/for_stage/hm_purchase_recommendations.ipynb)
-* [`rai_gnns_experimental.zip`](/HM/for_stage/rai_gnns_experimental.zip)
+* [`rai_gnns_experimental.zip`](https://rai-gnns-wheels.s3.us-east-1.amazonaws.com/folders/latest/rai_gnns_experimental.zip)
 
-You can select them and drag and drop them on the window that opened. For your convenience all of these files are already located in the [for_stage/](/HM/for_stage/) folder in the current repository.
+You can select them and drag and drop them on the window that opened.
 
 Once you dragged and dropped the files click on the `upload` button.
 
@@ -803,4 +790,5 @@ You can now pick a Python Notebook from the Notebooks section on the left in Sno
 <picture>
   <img src="assets/notebooks.png" alt="stage" style="width:600px;">
 </picture>
+
 
