@@ -376,7 +376,7 @@ For this you need to run the following commands in a Snowflake SQL Worksheet. Fo
 
 BEGIN
     -- 1. Declare variables
-    LET db_name STRING := 'HM_DB_EDGE_IF';
+    LET db_name STRING := 'HM_DB';
     LET schema_name STRING := 'HM_SCHEMA';
     LET schema_full_name STRING := db_name || '.' || schema_name;
     LET role_name STRING := 'SYSADMIN';
