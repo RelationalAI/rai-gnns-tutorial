@@ -153,7 +153,6 @@ joined AS (
         ON CAST(t."t_dat" AS DATE) > ts.timestamp
         AND CAST(t."t_dat" AS DATE) <= DATEADD(DAY, 7, ts.timestamp)
 )
--- Aggregate article_ids as array per customer per timestamp
 SELECT *
 FROM joined
 ORDER BY RANDOM();
@@ -174,7 +173,6 @@ joined AS (
         ON CAST(t."t_dat" AS DATE) > ts.timestamp
         AND CAST(t."t_dat" AS DATE) <= DATEADD(DAY, 7, ts.timestamp)
 )
--- Aggregate article_ids as array per customer per timestamp
 SELECT *
 FROM joined
 ORDER BY RANDOM();
