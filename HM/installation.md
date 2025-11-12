@@ -195,6 +195,15 @@ Depending on the role used for accessing the database, you may need to grant the
 GRANT CREATE NOTEBOOK ON SCHEMA identifier($schema_full_name) TO ROLE identifier($role_name);
 ```
 
+### Grant Access to Snowflake for Experiment Tracking
+
+```sql
+GRANT USAGE ON DATABASE identifier($db_name) TO APPLICATION RELATIONALAI;
+GRANT USAGE ON SCHEMA identifier($schema_model_registry_full_name) TO APPLICATION RELATIONALAI;
+GRANT CREATE EXPERIMENT ON SCHEMA identifier($schema_model_registry_full_name) TO APPLICATION RELATIONALAI;
+GRANT CREATE MODEL ON SCHEMA identifier($schema_model_registry_full_name) TO APPLICATION RELATIONALAI;
+```
+
 ## Get and Upload Data to the Stage
 
 The use cases of this tutorial are based on the [**H&M Personalized Fashion Recommendations**](https://www.kaggle.com/competitions/h-and-m-personalized-fashion-recommendations/overview). You will need to download the data from Kaggle and then upload it to the Snowflake stage you previously created. For that you have to follow these steps:
