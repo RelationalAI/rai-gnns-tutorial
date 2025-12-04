@@ -103,6 +103,8 @@ SET schema_churn_name = 'hm_churn';
 SET schema_churn_full_name = $db_name||'.'||$schema_churn_name; -- fully-qualified
 SET stage_name = 'hm_stage'; -- fully-qualified
 SET stage_full_name = $schema_full_name||'.'||$stage_name;
+SET schema_model_registry_name = 'model_registry';
+SET schema_model_registry_full_name = $db_name||'.'||$schema_model_registry_name; -- fully-qualified
 SET wh_name = 'hm_wh';
 SET wh_size = 'X-SMALL';
 SET role_name = 'SYSADMIN';   -- what role will have access to the db/warehouse/schema etc.
@@ -193,6 +195,15 @@ Depending on the role used for accessing the database, you may need to grant the
 ```sql
 -- privilege for notebook
 GRANT CREATE NOTEBOOK ON SCHEMA identifier($schema_full_name) TO ROLE identifier($role_name);
+```
+
+### Grant Access to Snowflake for Experiment Tracking
+
+```sql
+GRANT USAGE ON DATABASE identifier($db_name) TO APPLICATION RELATIONALAI;
+GRANT USAGE ON SCHEMA identifier($schema_model_registry_full_name) TO APPLICATION RELATIONALAI;
+GRANT CREATE EXPERIMENT ON SCHEMA identifier($schema_model_registry_full_name) TO APPLICATION RELATIONALAI;
+GRANT CREATE MODEL ON SCHEMA identifier($schema_model_registry_full_name) TO APPLICATION RELATIONALAI;
 ```
 
 ## Get and Upload Data to the Stage
