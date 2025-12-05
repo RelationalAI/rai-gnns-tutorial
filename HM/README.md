@@ -11,7 +11,7 @@
 - [Dataset Schema](#-dataset-schema)
 - [Churn Prediction](#-churn-prediction)
 - [Purchase Recommendation](#-purchase-recommendation)
-- [MLflow](#-MLflow)
+- [Experiment Tracking](#-ExperimentTracking)
 
 <a name="-overview"></a>
 
@@ -91,8 +91,10 @@ To run this example you can use the [hm_purchase_recommendations.ipynb](/HM/for_
 
 ---
 
-<a name="-Mlflow"></a>
+<a name="-ExperimentTracking"></a>
 
-## 🧠 MLflow
+## 🧠 Experiment Tracking
 
-In parallel with running the notebooks, you can use MLflow to monitor the training process—see an example [MLflow.md](/HM/MLflow.md).
+In parallel with running the notebooks, you can use Snowflakes built in capabilities for experiment tracking.
+See this [link](https://www.snowflake.com/en/developers/guides/getting-started-with-ai-observability/#examine-results) for a tutorial.
+
