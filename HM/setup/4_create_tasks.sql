@@ -153,13 +153,8 @@ joined AS (
         ON CAST(t."t_dat" AS DATE) > ts.timestamp
         AND CAST(t."t_dat" AS DATE) <= DATEADD(DAY, 7, ts.timestamp)
 )
--- Aggregate article_ids as array per customer per timestamp
-SELECT
-    TO_VARCHAR(timestamp, 'YYYY-MM-DD') AS "timestamp",
-    "customer_id",
-    ARRAY_AGG(DISTINCT "article_id") AS "article_id"
+SELECT *
 FROM joined
-GROUP BY timestamp, "customer_id"
 ORDER BY RANDOM();
 
 -- Create the VALIDATION table with the 53rd week
@@ -178,13 +173,8 @@ joined AS (
         ON CAST(t."t_dat" AS DATE) > ts.timestamp
         AND CAST(t."t_dat" AS DATE) <= DATEADD(DAY, 7, ts.timestamp)
 )
--- Aggregate article_ids as array per customer per timestamp
-SELECT
-    timestamp as "timestamp",
-    "customer_id",
-    ARRAY_AGG(DISTINCT "article_id") AS "article_id"
+SELECT *
 FROM joined
-GROUP BY timestamp, "customer_id"
 ORDER BY RANDOM();
 
 -- Create the TEST table with the 54th week
@@ -203,11 +193,6 @@ joined AS (
         ON CAST(t."t_dat" AS DATE) > ts.timestamp
         AND CAST(t."t_dat" AS DATE) <= DATEADD(DAY, 7, ts.timestamp)
 )
--- Aggregate article_ids as array per customer per timestamp
-SELECT
-    timestamp as "timestamp",
-    "customer_id",
-    ARRAY_AGG(DISTINCT "article_id") AS "article_id"
+SELECT *
 FROM joined
-GROUP BY timestamp, "customer_id"
 ORDER BY RANDOM();

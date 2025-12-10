@@ -37,18 +37,18 @@ To prepare the necessary data, tables, schemas, and other components for the two
 
 This schema consists of three tables:
 
-- **CUSTOMERS** Table – Each row represents a customer and includes details such as age, residence area, and club membership. The table's primary key is the `customer_id` column, which uniquely identifies each customer.
+- **CUSTOMERS** Table – Each row represents a customer and includes details such as age, residence area, and club membership. The table's candidate key is the `customer_id` column, which uniquely identifies each customer.
 
-- **ARTICLES** Table – Each row represents a product (article), containing attributes like product name, product type, and color. The table's primary key is the `article_id` column, which uniquely identifies each article. An article can be thought of as a product. 
+- **ARTICLES** Table – Each row represents a product (article), containing attributes like product name, product type, and color. The table's candidate key is the `article_id` column, which uniquely identifies each article. An article can be thought of as a product. 
 
-- **TRANSACTIONS** Table – Each row describes a transaction, capturing which customer purchased which article, on what date, and at what price. This table references the `CUSTOMERS` and `ARTICLES` tables through the foreign key columns `customer_id` and `article_id`, respectively. There is no primary key for this table.
+- **TRANSACTIONS** Table – Each row describes a transaction, capturing which customer purchased which article, on what date, and at what price. This table references the `CUSTOMERS` and `ARTICLES` tables through the foreign key columns `customer_id` and `article_id`, respectively. There is no candidate key for this table.
 
 <p align="center">
   <img src="assets/schema_hd.png" alt="Image" />
 </p>
 <p align="center"><em>Figure 1: Sample schema of the H&M dataset.</em></p>
 
-Based on this **schema**, we can define a **graph** where **each row** in **each table** corresponds to **a node**. This results in `customer`, `article`, and `transaction` nodes. **Edges** between nodes are defined by **primary–foreign key relationships**.  In this schema, we have two types of edges: a **customer performs a transaction** (connecting a `customer` node to a `transaction` node), and an **article is purchased in a transaction** (connecting an `article` node to a `transaction` node).
+Based on this **schema**, we can define a **graph** where **each row** in **each table** corresponds to **a node**. This results in `customer`, `article`, and `transaction` nodes. **Edges** between nodes are defined by **candidate–foreign key relationships**.  In this schema, we have two types of edges: a **customer performs a transaction** (connecting a `customer` node to a `transaction` node), and an **article is purchased in a transaction** (connecting an `article` node to a `transaction` node).
 
 ---
 <a name="-churn-prediction"></a>
@@ -62,7 +62,7 @@ This is a **node prediction task**, as we aim to make predictions for nodes of t
 To proceed, we must first create a **task table** that defines the prediction task. This table will contain training and validation examples for the model. It serves as a structured representation of the problem by specifying key entities from the database that are relevant to churn prediction. Additionally, it includes corresponding labels for each entity, providing the necessary supervision for the model to learn effectively. Optionally, this table also includes a time column that is crucial for some tasks as the one at hand. 
 
 In our use case, the task table consists of three columns:
-* Since we are predicting customer churn, the task table includes  `customer IDs`, representing the customer nodes for which predictions will be made. These values must match the primary key values in the `CUSTOMERS` table of the database.
+* Since we are predicting customer churn, the task table includes  `customer IDs`, representing the customer nodes for which predictions will be made. These values must match the candidate key values in the `CUSTOMERS` table of the database.
 * Α `timestamp` column is also required, as a customer may be active one week but churn the next. 
 * The task table contains  the ground truth label, which the GNN will learn to predict. The label is `0` (no churn) if the customer made a purchase in the week following the timestamp and `1` (churn) otherwise. We are going to store the labels in the `churn` column. We are showing how to create the task table in the [installation.md](/HM/installation.md).
 
@@ -81,8 +81,8 @@ To proceed, we must first create a **task table** that defines the recommendatio
 
 In our use case, the task table consists of three columns:
 
-* The `customer_id` column identifies the customer nodes for which the model will make predictions. These values must match the primary key values in the `CUSTOMERS` table.
-* The `article_id` column contains a list of `article IDs` representing the ground truth — the articles the customer actually purchased during the target week. These are the edges the GNN will learn to predict. These values must match the primary key values in the `ARTICLES` table.
+* The `customer_id` column identifies the customer nodes for which the model will make predictions. These values must match the candidate key values in the `CUSTOMERS` table.
+* The `article_id` column contains the articles (`article IDs`) that a customer purchased at a given date, representing the ground truth. These are the edges the GNN will learn to predict. These values must match the candidate key values in the `ARTICLES` table.
 * The `timestamp` column specifies the reference date. The model is expected to predict the articles that the customer will purchase in the seven days following this timestamp.
 
 This task formulation enables the model to learn personalized product recommendations that are both customer-specific and time-aware. We provide instructions for generating this task table in the [installation.md](/HM/installation.md).
