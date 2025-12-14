@@ -502,6 +502,7 @@ Run the following commands in a Snowflake SQL Worksheet. For your convenience, a
 
 ```sql
 -- Define database, schemas and tables
+SET wh_name = 'hm_wh';
 SET db_name = 'hm_db';
 SET schema_name = 'hm_schema';
 SET schema_full_name = $db_name||'.'||$schema_name; -- fully-qualified
@@ -526,6 +527,7 @@ SET purchase_validation_table_name = $schema_purchase_full_name||'.'||'validatio
 SET purchase_test_table_name = $schema_purchase_full_name||'.'||'test';
 
 USE ROLE SYSADMIN;
+USE WAREHOUSE IDENTIFIER($wh_name);
 USE DATABASE IDENTIFIER($db_name);
 
 -- CHURN TASK
@@ -799,6 +801,7 @@ You can now pick a Python Notebook from the Notebooks section on the left in Sno
 <picture>
   <img src="assets/notebooks.png" alt="stage" style="width:600px;">
 </picture>
+
 
 
 
