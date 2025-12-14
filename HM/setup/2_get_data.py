@@ -3,12 +3,12 @@ import shutil
 import pandas as pd
 import snowflake.connector
 from zipfile import ZipFile
-from dotenv import load_dotenv
-from kaggle.api.kaggle_api_extended import KaggleApi
 
+from dotenv import load_dotenv
 # Load environment variables from .env file
 load_dotenv()
 
+from kaggle.api.kaggle_api_extended import KaggleApi
 # Connecting to Kaggle
 api = KaggleApi()
 api.authenticate()
