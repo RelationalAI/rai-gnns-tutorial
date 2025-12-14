@@ -47,13 +47,17 @@ CREATE OR REPLACE WAREHOUSE identifier($wh_name) WITH WAREHOUSE_SIZE = $wh_size;
 
 -- create schemas
 CREATE SCHEMA IF NOT EXISTS identifier($schema_full_name);
+GRANT USAGE ON SCHEMA identifier($schema_full_name) TO ROLE identifier($role_name);
 USE SCHEMA identifier($schema_full_name);
 
 CREATE SCHEMA IF NOT EXISTS identifier($schema_churn_full_name);
-USE SCHEMA identifier($schema_churn_full_name);
+GRANT USAGE ON SCHEMA identifier($schema_churn_full_name) TO ROLE identifier($role_name);
 
 CREATE SCHEMA IF NOT EXISTS identifier($schema_purchase_full_name);
-USE SCHEMA identifier($schema_purchase_full_name);
+GRANT USAGE ON SCHEMA identifier($schema_purchase_full_name) TO ROLE identifier($role_name);
+
+CREATE SCHEMA IF NOT EXISTS identifier($schema_model_registry_full_name);
+GRANT USAGE ON SCHEMA identifier($schema_model_registry_full_name) TO ROLE identifier($role_name);
 
 -- create a stage
 CREATE STAGE IF NOT EXISTS identifier($stage_full_name) DIRECTORY = ( ENABLE = true );
