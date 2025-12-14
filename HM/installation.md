@@ -222,10 +222,10 @@ You should then see a confirmation message like this:
   <img src="assets/5-kaggle-rules.png" alt="stage" style="width:550px;">
 </picture>
 
-2. Go to the **settings** of your Kaggle profile, find the **API** section and click on the **Create New Token** button. This is going to download a **kaggle.json** file containing your username and a key.
+2. Go to your Kaggle profile **Settings**, locate the **API** section, and click **Generate New Token**. You’ll be prompted to give the token a name; once it’s created, copy it. You’ll use this token in the **.env** file that you’ll create shortly.
 
 <picture>
-  <img src="assets/4-kaggle-token.png" alt="stage" style="width:550px;">
+  <img src="assets/4-kaggle-token-new.png" alt="stage" style="width:550px;">
 </picture>
 
 3. Download the [**get_data.py**](/HM/setup/2_get_data.py) script.
@@ -241,13 +241,12 @@ pip install snowflake-connector-python kaggle python-dotenv pandas
 
 5. In the same directory where you placed **get_data.py**, create a **.env** file defining the following environment variables:
 
-- `KAGGLE_USERNAME` and `KAGGLE_KEY` — from your downloaded kaggle.json file
+- `KAGGLE_API_TOKEN` — your generated kaggle access token.
 - `SNOWFLAKE_USER`, `SNOWFLAKE_PASSWORD`, and `SNOWFLAKE_ACCOUNT` — for connecting to Snowflake
 - Keep the remaining variables as they appear below:
 
 ```sh
-KAGGLE_USERNAME = <username from kaggle.json>
-KAGGLE_KEY = <key from kaggle.json>
+KAGGLE_API_TOKEN=<KGAT_kaggle_api_token>
 SNOWFLAKE_USER=<snowflake username>
 SNOWFLAKE_PASSWORD=<snowflake password>
 SNOWFLAKE_ACCOUNT=<snowflake account>
@@ -799,5 +798,6 @@ You can now pick a Python Notebook from the Notebooks section on the left in Sno
 <picture>
   <img src="assets/notebooks.png" alt="stage" style="width:600px;">
 </picture>
+
 
 
