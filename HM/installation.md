@@ -13,7 +13,7 @@ The process below explains, step by step, how to create the necessary database, 
 4. In a SQL Worksheet, run [import_data.sql](/HM/setup/3_import_data.sql)
 5. In a SQL Worksheet, run [create_tasks.sql](/HM/setup/4_create_tasks.sql)
 6. In a SQL Worksheet, run [create_notebooks.sql](/HM/setup/5_create_notebooks.sql)
-7. Under Notebooks in the Snowflake UI you can view the Python notebooks created by this tutorial. Note that you will need to install some [Python](#loading-python-packages) packages, the [RelationalAI GNN](#loading-the-rai_gnns_experimentalzip-python-package) Python package and also [provide access to S3](#external-access) for the notebooks to work.
+7. Under Notebooks in the Snowflake UI you can view the Python notebooks created by this tutorial. Note that you will need to install some [Python](#loading-python-packages) packages, the [RelationalAI GNN](#loading-the-relationalai_gnnszip-python-package) Python package and also [provide access to S3](#external-access) for the notebooks to work.
 
 ## Account & User (optional)
 
@@ -69,9 +69,9 @@ If you have already installed the RelationalAI Native App reach out to Pigi Kouk
 
 In case you need any assistance please reach out to Pigi Kouki or Ilias Fountalis.
 
-## Building the `rai_gnns_experimental.zip` Package
+## Building the `relationalai_gnns.zip` Package
 
-For traininig models and making predictions you will be working through a Snowflake Notebook and you will need to access certain RelationalAI services through the GNN Python SDK. To this end, you will need the `rai_gnns_experimental.zip` file. You can download it from [here](https://rai-gnns-wheels.s3.us-east-1.amazonaws.com/folders/latest/rai_gnns_experimental.zip).
+For traininig models and making predictions you will be working through a Snowflake Notebook and you will need to access certain RelationalAI services through the GNN Python SDK. To this end, you will need the `relationalai_gnns.zip` file. You can download it from [here](https://rai-gnns-wheels.s3.us-east-1.amazonaws.com/folders/latest/relationalai_gnns.zip).
 
 Keep this file as we will upload it later on to a Snowflake stage.
 
@@ -355,7 +355,7 @@ In the following window you will need to upload the following files:
 * [`environment.yml`](/HM/for_stage/environment.yml)
 * [`hm_churn_prediction.ipynb`](/HM/for_stage/hm_churn_prediction.ipynb)
 * [`hm_purchase_recommendations.ipynb`](/HM/for_stage/hm_purchase_recommendations.ipynb)
-* [`rai_gnns_experimental.zip`](https://rai-gnns-wheels.s3.us-east-1.amazonaws.com/folders/latest/rai_gnns_experimental.zip)
+* [`relationalai_gnns.zip`](https://rai-gnns-wheels.s3.us-east-1.amazonaws.com/folders/latest/relationalai_gnns.zip)
 
 You can select them and drag and drop them on the window that opened.
 
@@ -778,20 +778,20 @@ Next, click `Save` for the packages to be installed.
 > [!NOTE]
 > For your convenience, a file called `environment.yml` is included in the files that are meant to be uploaded to the stage. This file already specifies all the above packages and therefore the notebooks should already have the necessary packages installed. If one or more packages are not installed please follow the process above to manually install them.
 
-#### Loading the `rai_gnns_experimental.zip` Python Package
+#### Loading the `relationalai_gnns.zip` Python Package
 
-Finally, you will need to install the `rai_gnns_experimental.zip` Python package that is needed to
+Finally, you will need to install the `relationalai_gnns.zip` Python package that is needed to
 interface with the RelationalAI Native App. The process is somewhat similar with the regular Python packages that
-you just installed, except you will be clicking on the `Stage Packages` tab on top and specifying the path to the `rai_gnns_experimental.zip` package.
+you just installed, except you will be clicking on the `Stage Packages` tab on top and specifying the path to the `relationalai_gnns.zip` package.
 
-The path needs to be fully qualified. For example `@HM_DB.HM_SCHEMA.HM_STAGE/rai_gnns_experimental.zip`:
+The path needs to be fully qualified. For example `@HM_DB.HM_SCHEMA.HM_STAGE/relationalai_gnns.zip`:
 
 <picture>
   <img src="assets/14-import-rai-gnns-experimental-zip.png" alt="stage" style="width:300px;">
 </picture>
 
 The system checks whether the path contains a valid Python package and, if yes, a green check box appears.
-Click `Import` to import the `rai_gnns_experimental.zip` package.
+Click `Import` to import the `relationalai_gnns.zip` package.
 
 
 ## Completed
