@@ -69,12 +69,6 @@ If you have already installed the RelationalAI Native App reach out to Pigi Kouk
 
 In case you need any assistance please reach out to Pigi Kouki or Ilias Fountalis.
 
-## Building the `relationalai_gnns.zip` Package
-
-For traininig models and making predictions you will be working through a Snowflake Notebook and you will need to access certain RelationalAI services through the GNN Python SDK. To this end, you will need the `relationalai_gnns.zip` file. You can download it from [here](https://rai-gnns-wheels.s3.us-east-1.amazonaws.com/folders/latest/relationalai_gnns.zip).
-
-Keep this file as we will upload it later on to a Snowflake stage.
-
 ## Set up Database Objects
 
 In the following steps you will be creating Snowflake Database Objects such as a warehouse, schema, stage, etc.
@@ -108,6 +102,7 @@ SET schema_model_registry_full_name = $db_name||'.'||$schema_model_registry_name
 SET wh_name = 'hm_wh';
 SET wh_size = 'X-SMALL';
 SET role_name = 'SYSADMIN';   -- what role will have access to the db/warehouse/schema etc.
+SET container_name = 'GNN_ENGINE_GPU_S';   -- what container will the notebook run in
 ```
 
 
@@ -121,14 +116,21 @@ The following cleans up by removing the database and warehouse for a fresh insta
 --
 
 -- cleanup
-DROP DATABASE IF EXISTS identifier($db_name);
-DROP WAREHOUSE IF EXISTS identifier($wh_name);
+-- DROP DATABASE IF EXISTS identifier($db_name);
+-- DROP WAREHOUSE IF EXISTS identifier($wh_name);
 
 -- create role if needed
 CREATE ROLE IF NOT EXISTS identifier($role_name);
 ```
 
+### Create a Compute Pool if it doesn't exist
+Next, you will create a compute pool for the notebook to run into. You can skip and use an already existing compute pool.
 
+-- create a compute pool
+CREATE COMPUTE POOL IF NOT EXISTS identifier($container_name)
+  MIN_NODES = 1
+  MAX_NODES = 1
+  INSTANCE_FAMILY = GPU_NV_S;
 
 ### Create a Database
 
@@ -335,7 +337,7 @@ conn.close()
 
 ## Upload Code to the Stage
 
-Once you have created the database, schema and stage you will now need to upload the necessary files to the stage that we can insert the data into Snowflake tables for further processing and create the notebooks for the use cases.
+Once you have created the database, schema and stage you will now need to upload the notebooks to the stage.
 
 For this you need to login into Snowsight, and, on the left, click on `Data > Databases`.
 After that, find the database that you have just created, and select the schema, stages and then the stage that you created. In our example you would be clicking on `HM_DB > HM_SCHEMA > Stages > HM_STAGE` as shown in the picture:
@@ -352,10 +354,8 @@ Next you will need to add some files. For this you need to click on the `Files` 
 
 In the following window you will need to upload the following files:
 
-* [`environment.yml`](/HM/for_stage/environment.yml)
-* [`hm_churn_prediction.ipynb`](/HM/for_stage/hm_churn_prediction.ipynb)
-* [`hm_purchase_recommendations.ipynb`](/HM/for_stage/hm_purchase_recommendations.ipynb)
-* [`relationalai_gnns.zip`](https://rai-gnns-wheels.s3.us-east-1.amazonaws.com/folders/latest/relationalai_gnns.zip)
+* [`CHURN_PREDICTION.ipynb`](/HM/for_stage/CHURN_PREDICTION.ipynb)
+* [`PURCHASE_RECOMMENDATIONS.ipynb`](/HM/for_stage/PURCHASE_RECOMMENDATIONS.ipynb)
 
 You can select them and drag and drop them on the window that opened.
 
@@ -734,73 +734,32 @@ USE SCHEMA HM_SCHEMA;
 -- churn_prediction.ipynb
 CREATE OR REPLACE NOTEBOOK churn_prediction
     FROM '@hm_db.hm_schema.hm_stage'
-    MAIN_FILE = 'hm_churn_prediction.ipynb'
+    MAIN_FILE = 'CHURN_PREDICTION.ipynb'
     QUERY_WAREHOUSE = HM_WH
-    WAREHOUSE = HM_WH
-    ;
+    RUNTIME_NAME = 'SYSTEM$GPU_RUNTIME'
+    COMPUTE_POOL = 'GNN_ENGINE_GPU_S';
 
 -- purchase_recommendations.ipynb
 CREATE OR REPLACE NOTEBOOK purchase_recommendations
     FROM '@hm_db.hm_schema.hm_stage'
-    MAIN_FILE = 'hm_purchase_recommendations.ipynb'
+    MAIN_FILE = 'PURCHASE_RECOMMENDATIONS.ipynb'
     QUERY_WAREHOUSE = HM_WH
-    WAREHOUSE = HM_WH
+    RUNTIME_NAME = 'SYSTEM$GPU_RUNTIME'
+    COMPUTE_POOL = 'GNN_ENGINE_GPU_S';
     ;
 ```
 
-### Setting up Packages for the Notebooks
+### Run the Notebooks
 
-#### Loading Python Packages
+Now you are ready to run the notebook of your choice.
 
-> [!NOTE]
-> You need to do the following for every notebook that you would like to use
+Go to `Projects` > `Notebooks`, choose a notebook (CHURN_PREDICTION or PURCHASE_RECOMMENDATIONS) and press on `Start` to start the kernel!
 
-The Notebooks containing the code for the two tasks use some Python packages.
-These packages need to be installed before the Notebook can run.
-
-To install such packages you should click on the top `Packages` and then type the name of each package in the`Anaconda Packages` search box and selecting the package. You should install the following packages:
-
-* `numpy`
-* `tabulate`
-* `pydantic`
-* `sqlalchemy`
-* `python-graphviz`
-* `cryptography`
-* `pydot`
-* `certifi`
-
-<picture>
-  <img src="assets/13-python-packages.png" alt="stage" style="width:300px;">
-</picture>
-
-Next, click `Save` for the packages to be installed.
-
-> [!NOTE]
-> For your convenience, a file called `environment.yml` is included in the files that are meant to be uploaded to the stage. This file already specifies all the above packages and therefore the notebooks should already have the necessary packages installed. If one or more packages are not installed please follow the process above to manually install them.
-
-#### Loading the `relationalai_gnns.zip` Python Package
-
-Finally, you will need to install the `relationalai_gnns.zip` Python package that is needed to
-interface with the RelationalAI Native App. The process is somewhat similar with the regular Python packages that
-you just installed, except you will be clicking on the `Stage Packages` tab on top and specifying the path to the `relationalai_gnns.zip` package.
-
-The path needs to be fully qualified. For example `@HM_DB.HM_SCHEMA.HM_STAGE/relationalai_gnns.zip`:
-
-<picture>
-  <img src="assets/14-import-rai-gnns-experimental-zip.png" alt="stage" style="width:300px;">
-</picture>
-
-The system checks whether the path contains a valid Python package and, if yes, a green check box appears.
-Click `Import` to import the `relationalai_gnns.zip` package.
-
-
-## Completed
-
-You can now pick a Python Notebook from the Notebooks section on the left in Snowsight (i.e. the Snowflake UI) and run it!
 
 <picture>
   <img src="assets/notebooks.png" alt="stage" style="width:600px;">
 </picture>
+
 
 
 
