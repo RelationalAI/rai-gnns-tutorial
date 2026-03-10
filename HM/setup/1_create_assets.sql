@@ -25,6 +25,7 @@ SET schema_model_registry_full_name = $db_name||'.'||$schema_model_registry_name
 SET wh_name = 'hm_wh';
 SET wh_size = 'X-SMALL';
 SET role_name = 'SYSADMIN';   -- what role will have access to the db/warehouse/schema etc.
+SET container_name = 'GNN_ENGINE_GPU_S';   -- what container will the notebook run in
 
 --
 -- assets
@@ -34,7 +35,7 @@ SET role_name = 'SYSADMIN';   -- what role will have access to the db/warehouse/
 -- DROP WAREHOUSE IF EXISTS identifier($wh_name);
 
 -- create compute pool
-CREATE COMPUTE POOL IF NOT EXISTS GNN_ENGINE_GPU_S
+CREATE COMPUTE POOL IF NOT EXISTS identifier($container_name)
   MIN_NODES = 1
   MAX_NODES = 1
   INSTANCE_FAMILY = GPU_NV_S;
