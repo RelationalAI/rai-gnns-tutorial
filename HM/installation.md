@@ -745,12 +745,14 @@ CREATE OR REPLACE NOTEBOOK purchase_recommendations
 
 Now you are ready to run the notebook of your choice.
 
-Go to `Projects` > `Notebooks`, choose a notebook (CHURN_PREDICTION or PURCHASE_RECOMMENDATIONS) and press on `Start` to start the kernel!
-
+Go to `Projects` > `Notebooks` and choose one of the notebooks (`CHURN_PREDICTION` or `PURCHASE_RECOMMENDATIONS`).
 
 <picture>
   <img src="assets/notebooks.png" alt="stage" style="width:600px;">
 </picture>
+
+Then looking at the notebook, click the menu button in the top-right corner, then select `Notebook settings`. In the `External access` section, enable `PYPI_ACCESS_INTEGRATION` and click `Save`. This allows you to use `pip` to install the `relationalai_gnn` package, as shown in the first cell.
+Finally, click `Start` to launch the notebook kernel.
 
 
 
