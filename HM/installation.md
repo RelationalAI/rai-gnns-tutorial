@@ -126,11 +126,13 @@ CREATE ROLE IF NOT EXISTS identifier($role_name);
 ### Create a Compute Pool if it doesn't exist
 Next, you will create a compute pool for the notebook to run into. You can skip and use an already existing compute pool.
 
+```sql
 -- create a compute pool
 CREATE COMPUTE POOL IF NOT EXISTS identifier($container_name)
   MIN_NODES = 1
   MAX_NODES = 1
   INSTANCE_FAMILY = GPU_NV_S;
+```
 
 ### Create a Database
 
@@ -759,6 +761,7 @@ Go to `Projects` > `Notebooks`, choose a notebook (CHURN_PREDICTION or PURCHASE_
 <picture>
   <img src="assets/notebooks.png" alt="stage" style="width:600px;">
 </picture>
+
 
 
 
