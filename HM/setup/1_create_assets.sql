@@ -30,8 +30,14 @@ SET role_name = 'SYSADMIN';   -- what role will have access to the db/warehouse/
 -- assets
 --
 -- cleanup
-DROP DATABASE IF EXISTS identifier($db_name);
-DROP WAREHOUSE IF EXISTS identifier($wh_name);
+-- DROP DATABASE IF EXISTS identifier($db_name);
+-- DROP WAREHOUSE IF EXISTS identifier($wh_name);
+
+-- create compute pool
+CREATE COMPUTE POOL IF NOT EXISTS GNN_ENGINE_GPU_S
+  MIN_NODES = 1
+  MAX_NODES = 1
+  INSTANCE_FAMILY = GPU_NV_S;
 
 -- create role
 CREATE ROLE IF NOT EXISTS identifier($role_name);
