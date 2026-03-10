@@ -363,16 +363,6 @@ You can select them and drag and drop them on the window that opened.
 
 Once you dragged and dropped the files click on the `upload` button.
 
-<picture>
-  <img src="assets/2-upload.png" alt="stage" style="width:350px;">
-</picture>
-
-Your stage will now look something like this:
-
-<picture>
-  <img src="assets/3-stage-files.png" alt="stage" style="width:550px;">
-</picture>
-
 ## Load the Data into Snowflake Tables
 
 Once you have all the files in the stage you can now go ahead and import the data into Snowflake tables.
@@ -761,6 +751,7 @@ Go to `Projects` > `Notebooks`, choose a notebook (CHURN_PREDICTION or PURCHASE_
 <picture>
   <img src="assets/notebooks.png" alt="stage" style="width:600px;">
 </picture>
+
 
 
 
